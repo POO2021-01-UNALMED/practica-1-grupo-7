@@ -6,6 +6,13 @@ public class Persona {
 	private String nombre;
 	private double id;
 	
+	// CONSTRUCTOR
+	public Persona(String nombre, double id) {
+		super();
+		this.nombre = nombre;
+		this.id = id;
+	}
+		
 	// GETTERS Y SETTERS
 	public String getNombre() {
 		return nombre;
@@ -18,5 +25,11 @@ public class Persona {
 	}
 	public void setId(double id) {
 		this.id = id;
+	}
+	
+	// TOSTRING
+	public String toString() {
+		return "Nombre: " + nombre
+				+ "\nId: " + id;
 	}
 }
