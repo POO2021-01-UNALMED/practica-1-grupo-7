@@ -1,3 +1,3 @@
-# Practica1.  
+# Practica1
 
-Prueba
+![alt text](Diagrama_clases.png)
