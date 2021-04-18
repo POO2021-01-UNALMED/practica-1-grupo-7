@@ -1,6 +1,8 @@
 package gestorAplicacion;
 
 public class Encomienda {
+	
+	// Atributos.
 	private long id;
 	private float peso;
 	private float largo;
@@ -15,6 +17,7 @@ public class Encomienda {
 	private Cliente comprador;
 	private boolean estadoRecibido;
 	
+	// constructor. 
 	public Encomienda(long id, float peso, float largo, float ancho, float alto, String descripcionEnconmienda,
 			String fechaEnvio, String fechaEntrega, Localizacion lugarEntrega, Localizacion ultimaLocalizacion,
 			Cliente vendedor, Cliente comprador, boolean estadoRecibido) {
@@ -33,7 +36,13 @@ public class Encomienda {
 		this.comprador = comprador;
 		this.estadoRecibido = estadoRecibido;
 	}
+	
+	//metodos.
+	
+	
 
+	
+	// toString
 	@Override
 	public String toString() {
 		return "Encomienda [id=" + id + ", peso=" + peso + ", largo=" + largo + ", ancho=" + ancho + ", alto=" + alto
@@ -41,10 +50,6 @@ public class Encomienda {
 				+ ", fechaEntrega=" + fechaEntrega + ", vendedor=" + vendedor + ", comprador=" + comprador
 				+ ", estadoRecibido=" + estadoRecibido + "]";
 	}
-	
-	
-	
-	
 	
 
 }
