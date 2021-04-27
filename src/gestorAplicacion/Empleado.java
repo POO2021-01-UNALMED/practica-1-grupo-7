@@ -4,7 +4,7 @@ public class Empleado extends Persona {
 	
 	// ATRIBUTOS
 	private float salario;
-	// ¿Vigencia del contrato?
+	// ¿Ponemos vigencia del contrato?
 	 	
 	// CONSTRUCTOR
 	public Empleado(String nombre, String id, float salario) {
@@ -14,11 +14,25 @@ public class Empleado extends Persona {
 	
 	// METODOS
 	public Encomienda crearEncomienda() {
-		return new Encomienda();
+		return new Encomienda(); // TODO: Borrar
+		/* TODO: Crear instrucciones donde se pida
+		 * y se pida la información del paquete al empleado
+		 * y se cree el paquete que será retornado por el 
+		 * método 
+		 * 
+		 * Usar el atributo estático "clientes" de la oficina-bodega para ver
+		 * si el usuario (tanto remitente como destinatario)
+		 * ya está registrado en la base de datos (lista) y no 
+		 * tener que volver a llenar todos sus datos. En caso
+		 * de que no esté, agregarlo a OficinaBodega.clientes
+		 * 
+		 * 
+		 */
+	
 	}
 	
 	public void realizarEnvio(Encomienda enc, Cliente destinatario) {
-		
+		// TODO: Este lo podemos mirar después
 	}
 	
 	public double costosEnvio(Encomienda enc) {

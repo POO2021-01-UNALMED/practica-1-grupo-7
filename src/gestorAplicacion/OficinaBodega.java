@@ -10,8 +10,8 @@ public class OficinaBodega {
     private Localizacion ubicacion;
     private String telefono;
     private Empleado empleado;
-    private List<Encomienda> encomiendas = new ArrayList<>();
-    private List<Cliente> clientes = new ArrayList<>();
+    public static List<Encomienda> encomiendas = new ArrayList<>();
+    public static List<Cliente> clientes = new ArrayList<>();
 
 
 	// CONSTRUCTOR
@@ -25,16 +25,7 @@ public class OficinaBodega {
         this.telefono  = telefono;
         this.empleado  = empleado;
     }
-    
-    // GETTERS Y SETTERS
-    public List<Encomienda> getEncomiendas() {
-    	return encomiendas;
-    }
-    
-    public List<Cliente> getClientes() {
-    	return clientes;
-    }
-    
+        
     // TOSTRING
     @Override
     public String toString() {

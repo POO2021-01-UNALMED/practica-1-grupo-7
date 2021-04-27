@@ -54,13 +54,13 @@ public class UInterface {
 		emp.costosEnvio(paquete);
 		verificacionDatos(paquete);
 		if (paquete != null) {
-			ofiBo.getEncomiendas().add(paquete);
+			OficinaBodega.encomiendas.add(paquete);
 		}
 		emp.realizarEnvio(paquete, paquete.getDestinatario());
 	}
 	
 	private static void rastrearEnvio(Encomienda enc) {
-		
+		// TODO: Después lo miramos
 	}
 	
 	private static void verificacionDatos(Encomienda enc) {
@@ -72,7 +72,9 @@ public class UInterface {
 		
 		switch(opcion) {
 			case 1: break;
-			case 2: // TODO: editarEnc(Encomienda enc)
+			case 2: /* TODO: crear método editarEnc(Encomienda enc)
+					que permita editar cualquier atributo del paquete
+					*/
 			case 3: enc = null;
 		}
 	}
