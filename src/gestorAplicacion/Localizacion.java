@@ -1,25 +1,33 @@
 package gestorAplicacion;
 
 public class Localizacion {
-	//atributos
+	
+	// ATRIBUTOS
     private String pais = "Colombia";
     private String departamento;
     private String municipio;
     private String barrio;
     private String direccion;
-    private Empleado empleado;
+    
+    // CONSTRUCTOR
+    public Localizacion( 
+    		String departamento, String municipio, 
+    		String barrio, String direccion) {
+    	this.departamento = departamento;
+    	this.municipio = municipio;
+    	this.barrio = barrio;
+    	this.direccion = direccion;
+    }
+   
+    // TOSTRING
 	@Override
 	public String toString() {
-		return "Localizacion [pais=" + pais + ", "
-				+ "departamento=" + departamento + ","
-				+ " municipio=" + municipio
-				+ ", barrio=" + barrio + ", "
-				+ "direccion=" + direccion + ", "
-				+ "empleado=" + empleado + "]";
+		
+		return direccion
+				+ ", " + barrio
+				+ ", " + municipio
+				+ ", " + departamento
+				+ ", " + pais;
 	}
-    
-    
-    
-    
 
 }

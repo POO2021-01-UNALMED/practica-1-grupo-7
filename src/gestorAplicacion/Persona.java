@@ -4,10 +4,10 @@ public class Persona {
 	
 	// ATRIBUTOS
 	private String nombre;
-	private double id;
+	private String id;
 	
 	// CONSTRUCTOR
-	public Persona(String nombre, double id) {
+	public Persona(String nombre, String id) {
 		super();
 		this.nombre = nombre;
 		this.id = id;
@@ -20,10 +20,10 @@ public class Persona {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public double getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(double id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	
