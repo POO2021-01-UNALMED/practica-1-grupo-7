@@ -8,15 +8,14 @@ public class Persona {
 	
 	// CONSTRUCTOR
 	public Persona(String nombre, String id) {
-		super();
 		this.nombre = nombre;
-		this.id = id;
-	}
+		this.id = id;}
 		
 	// GETTERS Y SETTERS
 	public String getNombre() {
 		return nombre;
 	}
+	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}

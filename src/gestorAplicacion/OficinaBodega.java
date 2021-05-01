@@ -25,15 +25,57 @@ public class OficinaBodega {
         this.telefono  = telefono;
         this.empleado  = empleado;
     }
+    
         
     // TOSTRING
     @Override
     public String toString() {
-    	return "\n== Información de la empresa =="
+    	return "\n== Informaciï¿½n de la empresa =="
     			+ "\nNombre: " + nombre
-    			+ "\nUbicación: " + ubicacion
+    			+ "\nUbicaciï¿½n: " + ubicacion
     			+ "\nTelefono: " + telefono
     			+ "\n\n== Datos del empleado actual ==\n" + empleado
     			+ "\n";
     }
+    
+    //getters and setters
+
+	public String getNombre() {
+		return nombre;
+	}
+
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+
+	public Localizacion getUbicacion() {
+		return ubicacion;
+	}
+
+
+	public void setUbicacion(Localizacion ubicacion) {
+		this.ubicacion = ubicacion;
+	}
+
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+
+	public Empleado getEmpleado() {
+		return empleado;
+	}
+
+
+	public void setEmpleado(Empleado empleado) {
+		this.empleado = empleado;
+	}
 }
