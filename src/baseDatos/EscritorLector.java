@@ -31,18 +31,20 @@ public class EscritorLector {
 			
 		
 			//llamar archivo
-			FileInputStream fi new FileInputStream(new File(archivo.getAbsolutePath()+"\\src\\baseDatos\\empleados.txt"));
+			FileInputStream fi =  new FileInputStream(new File(archivo.getAbsolutePath()+
+					"\\src\\baseDatos\\empleados.txt"));
 			ObjectInputStream oi = new ObjectInputStream(fi);
 			//leer objetos del archivo
 			Empleado pr1 = (Empleado) oi.readObject();
 			Empleado pr2 = (Empleado) oi.readObject();
 			
-			System.out.println(pr1.toString());
+			//System.out.println(pr1.toString());
 			
 			// cerrar conexiones
 			oi.close();
 			fi.close();
 		 	
 		 }
+		
 	}
 }

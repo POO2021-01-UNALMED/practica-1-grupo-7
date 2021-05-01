@@ -1,6 +1,7 @@
 package gestorAplicacion;
+import java.io.Serializable;
 
-public class Persona {
+public class Persona implements Serializable  {
 	
 	// ATRIBUTOS
 	private String nombre;
