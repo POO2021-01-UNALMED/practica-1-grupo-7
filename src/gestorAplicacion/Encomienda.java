@@ -23,6 +23,21 @@ public class Encomienda {
 	
 	// CONSTRUCTOR
 	public Encomienda(float peso, float largo, float ancho, float alto, String descripcionEnc,
+			String fechaEnvio, String fechaEntrega) {
+		this.peso = peso;
+		this.largo = largo;
+		this.ancho = ancho;
+		this.alto = alto;
+		this.descripcionEnc = descripcionEnc;
+		this.fechaEnvio = fechaEnvio;
+		this.fechaEntrega = fechaEntrega;
+		
+		encRealizadas ++;
+		id = encRealizadas;
+	}
+	
+	
+	public Encomienda(float peso, float largo, float ancho, float alto, String descripcionEnc,
 			String fechaEnvio, String fechaEntrega, Localizacion lugarEntrega, Localizacion ultimaLocalizacion,
 			Cliente remitente, Cliente destinatario, boolean estadoRecibido) {
 		this.peso = peso;
@@ -165,11 +180,11 @@ public class Encomienda {
 				+ "\nLargo: " + largo
 				+ "\nAncho: " + ancho
 				+ "\nAlto: " + alto
-				+ "\nDescripción: " + descripcionEnc
-				+ "\nFecha de envío: " + fechaEnvio
+				+ "\nDescripciï¿½n: " + descripcionEnc
+				+ "\nFecha de envï¿½o: " + fechaEnvio
 				+ "\nFecha aproximada de llegada: " + fechaEntrega
 				+ "\nLugar de entrega: " + lugarEntrega
-				+ "\nÚltima localización: " + ultimaLocalizacion
+				+ "\nï¿½ltima localizaciï¿½n: " + ultimaLocalizacion
 				+ "\nRemitente: " + remitente
 				+ "\nDestinatario: " + destinatario
 				+ "\nCostos de envio: " + costosEnvio

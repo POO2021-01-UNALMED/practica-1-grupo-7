@@ -15,25 +15,28 @@ public class Empleado extends Persona {
 	
 	// METODOS
 	public Encomienda crearEncomienda() {
-		return new Encomienda(); // TODO: Borrar
+		
+		
+		
+		//return new Encomienda(); // TODO: Borrar
 		/* TODO: Crear instrucciones donde se pida
-		 * y se pida la información del paquete al empleado
-		 * y se cree el paquete que será retornado por el 
-		 * método 
+		 * y se pida la informaciï¿½n del paquete al empleado
+		 * y se cree el paquete que serï¿½ retornado por el 
+		 * mï¿½todo 
 		 * 
-		 * Usar el atributo estático "clientes" de la oficina-bodega para ver
+		 * Usar el atributo estï¿½tico "clientes" de la oficina-bodega para ver
 		 * si el usuario (tanto remitente como destinatario)
-		 * ya está registrado en la base de datos (lista) y no 
+		 * ya estï¿½ registrado en la base de datos (lista) y no 
 		 * tener que volver a llenar todos sus datos. En caso
-		 * de que no esté, agregarlo a OficinaBodega.clientes
+		 * de que no estï¿½, agregarlo a OficinaBodega.clientes
 		 * 
 		 * 
 		 */
 	
-	}
+	//}
 	
 	public void realizarEnvio(Encomienda enc, Cliente destinatario) {
-		// TODO: Este lo podemos mirar después
+		// TODO: Este lo podemos mirar despuï¿½s
 	}
 	
 	public double costosEnvio(Encomienda enc) {
@@ -71,6 +74,6 @@ public class Empleado extends Persona {
 		return "Nombre: " + super.getNombre()
 				+ "\nSuperEnviosId: " + super.getId()
 				+ "\nSalario: $" + salario
-				+ "\n¿Vigencia del contrato?: " + vigenciaContrato;
+				+ "\nï¿½Vigencia del contrato?: " + vigenciaContrato;
 	}
 }

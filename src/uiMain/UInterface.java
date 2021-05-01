@@ -9,28 +9,32 @@ import gestorAplicacion.OficinaBodega;
 
 public class UInterface {
 	
+	static Scanner input = new Scanner(System.in);
+	
+	
 	public static void main(String[] args) {
 
-		Scanner input = new Scanner(System.in);
+		
 		int opcion;
 		
 		// Crenado Objetos
-		Empleado empleadoSE = new Empleado("María", "1037633515", 2000000, "01-01-2022");
+		Empleado empleadoSE = new Empleado("Marï¿½a", "1037633515", 2000000, "01-01-2022");
 		
 		Localizacion localSE = new Localizacion("Antioquia", "Carolina", "Barrio azul", "Cra 45b #80-76");
+		Localizacion localSE2 = new Localizacion("BogotÃ¡", "AndrÃ©s", "Barrio morado", "Cll 170 av.caracas");
 		
-		OficinaBodega ofiBo = new OficinaBodega("Super Envíos", localSE, "8627365", empleadoSE);
+		OficinaBodega ofiBo = new OficinaBodega("Super Envï¿½os", localSE, "8627365", empleadoSE);
 		
 		
-		// MENÚ PRINCIPAL
+		// MENï¿½ PRINCIPAL
 		do {
-			System.out.println("  ¡BIENVENIDO(A) A SUPERENVIOS!\n");
-			System.out.println("\t.:MENÚ PRINCIPAL:.\n");
+			System.out.println("  ï¿½BIENVENIDO(A) A SUPERENVIOS!\n");
+			System.out.println("\t.:MENï¿½ PRINCIPAL:.\n");
 			System.out.println("1. Ver datos de la oficina");
-			System.out.println("2. Realizar nuevo envío");
+			System.out.println("2. Realizar nuevo envï¿½o");
 			System.out.println("3. Rastrear o ver detalles de envio");
-			System.out.println("4. Terminar sesión");
-			System.out.print("Ingresa el número de la opción deseada: ");
+			System.out.println("4. Terminar sesiï¿½n");
+			System.out.print("Ingresa el nï¿½mero de la opciï¿½n deseada: ");
 			opcion = input.nextInt();
 			
 			switch (opcion) {
@@ -43,13 +47,28 @@ public class UInterface {
 		
 	}
 	
-
-
-	
-	
-	// Método realizar nuevo envio
+	// Mï¿½todo realizar nuevo envio
 	private static void crearEncomienda(Empleado emp, OficinaBodega ofiBo) {
-		Encomienda paquete = emp.crearEncomienda();
+		
+		System.out.println("Ingrese el peso");
+        int peso = input.nextInt();
+        System.out.println("Ingrese el largo");
+        int largo = input.nextInt();
+        System.out.println("Ingrese el ancho");
+        int ancho = input.nextInt();
+        System.out.println("Ingrese el alto");
+        int alto = input.nextInt();
+        System.out.println("Ingrese descriciÃ³n de la encomienda");
+        String descripcionEnc = input.next();
+        System.out.println("Ingrese fecha de envio");
+        String fechaEnvio = input.next();
+        System.out.println("Ingrese fecha de entrega");
+        String fechaEntrega = input.next();
+        
+        
+        Encomienda paquete = new Encomienda(peso, largo, ancho,alto,descripcionEnc,fechaEnvio,fechaEntrega);
+		//Encomienda paquete = emp.crearEncomienda();
+		
 		emp.costosEnvio(paquete);
 		verificacionDatos(paquete);
 		if (paquete != null) {
@@ -61,7 +80,7 @@ public class UInterface {
 	
 	
 	private static void rastrearEnvio(Encomienda enc) {
-		// TODO: Después lo miramos
+		// TODO: Despuï¿½s lo miramos
 	}
 	
 	private static void verificacionDatos(Encomienda enc) {
@@ -73,7 +92,7 @@ public class UInterface {
 		
 		switch(opcion) {
 			case 1: break;
-			case 2: /* TODO: crear método editarEnc(Encomienda enc)
+			case 2: /* TODO: crear mï¿½todo editarEnc(Encomienda enc)
 					que permita editar cualquier atributo del paquete
 					*/
 			case 3: enc = null;
