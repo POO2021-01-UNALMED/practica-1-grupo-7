@@ -1,6 +1,7 @@
 package gestorAplicacion;
+import java.io.Serializable;
 
-public class Empleado extends Persona {
+public class Empleado extends Persona implements Serializable {
 	
 	// ATRIBUTOS
 	private float salario;
