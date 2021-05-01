@@ -6,7 +6,7 @@ public class Cliente extends Persona {
 	private double telefono;
 	private Localizacion ubicacion;
 	
-	// CONSTRUCTOR
+	// CONSTRUCTOR (implementa herencia)
 	public Cliente(String nombre, String id, double telefono, Localizacion ubicacion) {
 		super(nombre, id);
 		this.telefono = telefono;

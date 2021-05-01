@@ -4,9 +4,9 @@ public class Empleado extends Persona {
 	
 	// ATRIBUTOS
 	private float salario;
-	// ¿Ponemos vigencia del contrato?
+	
 	 	
-	// CONSTRUCTOR
+	// CONSTRUCTOR (implementa herencia)
 	public Empleado(String nombre, String id, float salario) {
 		super(nombre, id);
 		this.salario = salario;
