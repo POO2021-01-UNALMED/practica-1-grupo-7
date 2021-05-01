@@ -21,22 +21,6 @@ public class Encomienda {
 	
 	private double costosEnvio;
 	
-	// CONSTRUCTOR
-	public Encomienda(float peso, float largo, float ancho, float alto, String descripcionEnc,
-			String fechaEnvio, String fechaEntrega) {
-		this.peso = peso;
-		this.largo = largo;
-		this.ancho = ancho;
-		this.alto = alto;
-		this.descripcionEnc = descripcionEnc;
-		this.fechaEnvio = fechaEnvio;
-		this.fechaEntrega = fechaEntrega;
-		
-		encRealizadas ++;
-		id = encRealizadas;
-	}
-	
-	
 	public Encomienda(float peso, float largo, float ancho, float alto, String descripcionEnc,
 			String fechaEnvio, String fechaEntrega, Localizacion lugarEntrega, Localizacion ultimaLocalizacion,
 			Cliente remitente, Cliente destinatario, boolean estadoRecibido) {
@@ -57,7 +41,7 @@ public class Encomienda {
 		id = encRealizadas;
 	}
 	
-	public Encomienda() {}  // TODO: TEMPORAL, ELIMINAR
+	//public Encomienda() {}  // TODO: TEMPORAL, ELIMINAR
 
 	// GETTERS Y SETTERS
 	public long getId() {

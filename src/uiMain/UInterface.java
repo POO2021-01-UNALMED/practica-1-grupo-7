@@ -21,7 +21,7 @@ public class UInterface {
 		Empleado empleadoSE = new Empleado("Mar�a", "1037633515", 2000000, "01-01-2022");
 		
 		Localizacion localSE = new Localizacion("Antioquia", "Carolina", "Barrio azul", "Cra 45b #80-76");
-		Localizacion localSE2 = new Localizacion("Bogotá", "Andrés", "Barrio morado", "Cll 170 av.caracas");
+		Localizacion localSE2 = new Localizacion("Bogota", "Andre", "Barrio morado", "Cll 170 av.caracas");
 		
 		OficinaBodega ofiBo = new OficinaBodega("Super Env�os", localSE, "8627365", empleadoSE);
 		
@@ -39,6 +39,7 @@ public class UInterface {
 			
 			switch (opcion) {
 				case 1: System.out.println(ofiBo.toString()); // si vamos a menejar una sola oficina
+				case 2: crearEncomienda();
 				break;
 					
 			}
@@ -47,34 +48,44 @@ public class UInterface {
 		
 	}
 	
-	// M�todo realizar nuevo envio
-	private static void crearEncomienda(Empleado emp, OficinaBodega ofiBo) {
+	// Metodo realizar nuevo envio
+	private static void crearEncomienda() {
 		
 		System.out.println("Ingrese el peso");
         int peso = input.nextInt();
+        
         System.out.println("Ingrese el largo");
         int largo = input.nextInt();
+        
         System.out.println("Ingrese el ancho");
         int ancho = input.nextInt();
+        
         System.out.println("Ingrese el alto");
         int alto = input.nextInt();
+        
         System.out.println("Ingrese descrición de la encomienda");
         String descripcionEnc = input.next();
+        
         System.out.println("Ingrese fecha de envio");
         String fechaEnvio = input.next();
+        
         System.out.println("Ingrese fecha de entrega");
         String fechaEntrega = input.next();
         
+        System.out.println("Ingrese lugarEntrega");
         
-        Encomienda paquete = new Encomienda(peso, largo, ancho,alto,descripcionEnc,fechaEnvio,fechaEntrega);
+        
+        
+        
+        //Encomienda paquete = new Encomienda(peso, largo, ancho,alto,descripcionEnc,fechaEnvio,fechaEntrega);
 		//Encomienda paquete = emp.crearEncomienda();
 		
-		emp.costosEnvio(paquete);
+		/*emp.costosEnvio(paquete);
 		verificacionDatos(paquete);
 		if (paquete != null) {
 			OficinaBodega.encomiendas.add(paquete);
 		}
-		emp.realizarEnvio(paquete, paquete.getDestinatario());
+		emp.realizarEnvio(paquete, paquete.getDestinatario());*/
 	}
 	
 	

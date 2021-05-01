@@ -14,7 +14,7 @@ public class Empleado extends Persona {
 	}
 	
 	// METODOS
-	public Encomienda crearEncomienda() {
+//	public Encomienda crearEncomienda() {
 		
 		
 		
