@@ -4,12 +4,13 @@ public class Empleado extends Persona {
 	
 	// ATRIBUTOS
 	private float salario;
-	
+	private String vigenciaContrato;
 	 	
 	// CONSTRUCTOR (implementa herencia)
-	public Empleado(String nombre, String id, float salario) {
+	public Empleado(String nombre, String id, float salario, String vigenciaContrato) {
 		super(nombre, id);
 		this.salario = salario;
+		this.vigenciaContrato = vigenciaContrato;
 	}
 	
 	// METODOS
@@ -55,12 +56,21 @@ public class Empleado extends Persona {
 		salario = s;
 	}
 	
+	
+	public String getVigenciaContrato() {
+		return vigenciaContrato;
+	}
+
+	public void setVigenciaContrato(String vigenciaContrato) {
+		this.vigenciaContrato = vigenciaContrato;
+	}
+
 	// TOSTRING
 	@Override
 	public String toString() {
 		return "Nombre: " + super.getNombre()
 				+ "\nSuperEnviosId: " + super.getId()
 				+ "\nSalario: $" + salario
-				+ "\n¿Vigencia del contrato?: ";
+				+ "\n¿Vigencia del contrato?: " + vigenciaContrato;
 	}
 }

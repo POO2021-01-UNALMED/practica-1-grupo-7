@@ -14,19 +14,13 @@ public class UInterface {
 		Scanner input = new Scanner(System.in);
 		int opcion;
 		
-		// Creando empleado.
-		Empleado empleadoSE = new Empleado("María", "1037633515", 2000000);
+		// Crenado Objetos
+		Empleado empleadoSE = new Empleado("María", "1037633515", 2000000, "01-01-2022");
 		
-		// Creando Localizacion.
-		Localizacion localSE = new Localizacion(
-				"Antioquia", 
-				"Carolina", 
-				"Barrio azul", 
-				"Cra 45b #80-76"
-				);
+		Localizacion localSE = new Localizacion("Antioquia", "Carolina", "Barrio azul", "Cra 45b #80-76");
 		
-		// Creando oficina bodega
 		OficinaBodega ofiBo = new OficinaBodega("Super Envíos", localSE, "8627365", empleadoSE);
+		
 		
 		// MENÚ PRINCIPAL
 		do {
@@ -40,7 +34,8 @@ public class UInterface {
 			opcion = input.nextInt();
 			
 			switch (opcion) {
-				case 1: datosOfi(ofiBo); break;
+				case 1: System.out.println(ofiBo.toString()); // si vamos a menejar una sola oficina
+				break;
 					
 			}
 			
@@ -48,11 +43,11 @@ public class UInterface {
 		
 	}
 	
-	// MÉTODOS DE ACCIÓN
-	private static void datosOfi(OficinaBodega ofiBo) {
-		System.out.println(ofiBo.toString());
-	}
+
+
 	
+	
+	// Método realizar nuevo envio
 	private static void crearEncomienda(Empleado emp, OficinaBodega ofiBo) {
 		Encomienda paquete = emp.crearEncomienda();
 		emp.costosEnvio(paquete);
@@ -62,6 +57,8 @@ public class UInterface {
 		}
 		emp.realizarEnvio(paquete, paquete.getDestinatario());
 	}
+	
+	
 	
 	private static void rastrearEnvio(Encomienda enc) {
 		// TODO: Después lo miramos

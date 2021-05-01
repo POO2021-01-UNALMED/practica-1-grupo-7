@@ -30,9 +30,9 @@ public class OficinaBodega {
     // TOSTRING
     @Override
     public String toString() {
-    	return "\n== Informaciï¿½n de la empresa =="
+    	return "\n== Información de la empresa =="
     			+ "\nNombre: " + nombre
-    			+ "\nUbicaciï¿½n: " + ubicacion
+    			+ "\nUbicación: " + ubicacion
     			+ "\nTelefono: " + telefono
     			+ "\n\n== Datos del empleado actual ==\n" + empleado
     			+ "\n";
