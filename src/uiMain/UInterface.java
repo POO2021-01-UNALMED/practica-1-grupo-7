@@ -10,18 +10,22 @@ import gestorAplicacion.OficinaBodega;
 public class UInterface {
 	
 	public static void main(String[] args) {
-		
-		// VARIABLES AUXILIARES
+
 		Scanner input = new Scanner(System.in);
 		int opcion;
 		
+		// Creando empleado.
 		Empleado empleadoSE = new Empleado("María", "1037633515", 2000000);
+		
+		// Creando Localizacion.
 		Localizacion localSE = new Localizacion(
 				"Antioquia", 
 				"Carolina", 
 				"Barrio azul", 
 				"Cra 45b #80-76"
 				);
+		
+		// Creando oficina bodega
 		OficinaBodega ofiBo = new OficinaBodega("Super Envíos", localSE, "8627365", empleadoSE);
 		
 		// MENÚ PRINCIPAL
