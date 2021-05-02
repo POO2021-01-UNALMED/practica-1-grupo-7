@@ -3,6 +3,8 @@ import java.io.Serializable;
 
 public class Localizacion implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+	
 	// ATRIBUTOS
     private String pais = "Colombia";
     private String departamento;

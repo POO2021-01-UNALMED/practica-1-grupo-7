@@ -3,6 +3,8 @@ import java.io.Serializable;
 
 public class Encomienda implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+	
 	// ATRIBUTOS
 	private static int encRealizadas = 0;
 	
