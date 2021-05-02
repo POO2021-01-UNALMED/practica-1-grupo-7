@@ -1,6 +1,7 @@
 package gestorAplicacion;
+import java.io.Serializable;
 
-public class Encomienda {
+public class Encomienda implements Serializable{
 	
 	// ATRIBUTOS
 	private static int encRealizadas = 0;

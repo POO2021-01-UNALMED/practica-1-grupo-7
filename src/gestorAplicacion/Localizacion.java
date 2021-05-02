@@ -1,6 +1,7 @@
 package gestorAplicacion;
+import java.io.Serializable;
 
-public class Localizacion {
+public class Localizacion implements Serializable {
 	
 	// ATRIBUTOS
     private String pais = "Colombia";

@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 import gestorAplicacion.Empleado;
 
-public class EscritorLector {
+public class Serializar {
 	
 	static File archivo = new File("");//
 

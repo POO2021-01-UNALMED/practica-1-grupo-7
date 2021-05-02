@@ -34,7 +34,9 @@ public class UInterface {
 		Cliente cliente2 = new Cliente("Andrea Amaya", "1234567890", 2608080, local2);
 		clientes.add(cliente1);
 		clientes.add(cliente2);
-
+		
+		
+		// Nosotros solo tendremos UNA oficina !! 
 		OficinaBodega ofiBo = new OficinaBodega("Super Envios", local1, "8627365", empleado1);
 
 		// MENU PRINCIPAL
@@ -111,7 +113,7 @@ public class UInterface {
 		String municipio = input.next();
 		Localizacion lugarEntrega = verificarLocalizacion(municipio);
 
-		System.out.println("Ingrese lugarEntrega (ciudad)");
+		System.out.println("Ingrese ultimaLocalizacion (ciudad)");
 		String municipio2 = input.next();
 		Localizacion ultimaLocalizacion = verificarLocalizacion(municipio2);
 

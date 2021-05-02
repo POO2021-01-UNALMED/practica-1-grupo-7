@@ -1,6 +1,7 @@
 package gestorAplicacion;
+import java.io.Serializable;
 
-public class Cliente extends Persona {
+public class Cliente extends Persona implements Serializable{
 	
 	// ATRIBUTOS
 	private double telefono;
