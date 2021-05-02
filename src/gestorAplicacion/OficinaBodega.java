@@ -1,9 +1,9 @@
 package gestorAplicacion;
-
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OficinaBodega {
+public class OficinaBodega implements Serializable  {
     
 	// ATRIBUTOS
     private String nombre;
@@ -30,18 +30,40 @@ public class OficinaBodega {
     // TOSTRING
     @Override
     public String toString() {
-    	return "\n== Información de la empresa =="
+    	return "\n== Informaciï¿½n de la empresa =="
     			+ "\nNombre: " + nombre
-    			+ "\nUbicación: " + ubicacion
+    			+ "\nUbicaciï¿½n: " + ubicacion
     			+ "\nTelefono: " + telefono
     			+ "\n\n== Datos del empleado actual ==\n" + empleado
     			+ "\n";
     }
     
     //getters and setters
+    
+    
 
 	public String getNombre() {
 		return nombre;
+	}
+
+
+	public static List<Encomienda> getEncomiendas() {
+		return encomiendas;
+	}
+
+
+	public static void setEncomiendas(List<Encomienda> encomiendas) {
+		OficinaBodega.encomiendas = encomiendas;
+	}
+
+
+	public static List<Cliente> getClientes() {
+		return clientes;
+	}
+
+
+	public static void setClientes(List<Cliente> clientes) {
+		OficinaBodega.clientes = clientes;
 	}
 
 
