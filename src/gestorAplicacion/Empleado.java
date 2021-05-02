@@ -73,8 +73,8 @@ public class Empleado extends Persona implements Serializable {
 	@Override
 	public String toString() {
 		return "Nombre: " + super.getNombre()
-				+ "\nSuperEnviosId: " + super.getId()
-				+ "\nSalario: $" + salario
-				+ "\n�Vigencia del contrato?: " + vigenciaContrato;
+				+ "\n SuperEnviosId: " + super.getId()
+				+ "\n Salario: $" + salario
+				+ "\n Vigencia del contrato: " + vigenciaContrato;
 	}
 }

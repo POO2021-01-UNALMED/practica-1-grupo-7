@@ -21,8 +21,10 @@ public class Encomienda {
 	
 	private double costosEnvio;
 	
-	public Encomienda(float peso, float largo, float ancho, float alto, String descripcionEnc,
-			String fechaEnvio, String fechaEntrega, Localizacion lugarEntrega, Localizacion ultimaLocalizacion,
+	public Encomienda(float peso, float largo, float ancho, float alto,
+			String descripcionEnc,
+			String fechaEnvio, String fechaEntrega,
+			Localizacion lugarEntrega, Localizacion ultimaLocalizacion,
 			Cliente remitente, Cliente destinatario, boolean estadoRecibido) {
 		this.peso = peso;
 		this.largo = largo;
@@ -41,7 +43,7 @@ public class Encomienda {
 		id = encRealizadas;
 	}
 	
-	//public Encomienda() {}  // TODO: TEMPORAL, ELIMINAR
+
 
 	// GETTERS Y SETTERS
 	public long getId() {
@@ -164,11 +166,11 @@ public class Encomienda {
 				+ "\nLargo: " + largo
 				+ "\nAncho: " + ancho
 				+ "\nAlto: " + alto
-				+ "\nDescripci�n: " + descripcionEnc
-				+ "\nFecha de env�o: " + fechaEnvio
+				+ "\nDescripcion: " + descripcionEnc
+				+ "\nFecha de envio: " + fechaEnvio
 				+ "\nFecha aproximada de llegada: " + fechaEntrega
 				+ "\nLugar de entrega: " + lugarEntrega
-				+ "\n�ltima localizaci�n: " + ultimaLocalizacion
+				+ "\n ultima localizacion: " + ultimaLocalizacion
 				+ "\nRemitente: " + remitente
 				+ "\nDestinatario: " + destinatario
 				+ "\nCostos de envio: " + costosEnvio
