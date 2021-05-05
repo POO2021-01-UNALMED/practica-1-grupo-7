@@ -9,15 +9,14 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 
+import gestorAplicacion.OficinaBodega; //
 
-import matricula.Departamento;
-
-public class Serializardor {
+public class Serializador {
 	
 	private static File rutaTemp = new File("src\\baseDatos\\temp");
 	
 	// Este es el método encargado de serializar las listas que estan creadas en la clase Depto
-	public static void serializar(Departamento dpto) {
+	public static void serializar(OficinaBodega ofiBo) {
 		FileOutputStream fos;
 		ObjectOutputStream oos;
 		File[] docs = rutaTemp.listFiles();
@@ -53,5 +52,5 @@ public class Serializardor {
 				}	
 			}
 		}
-	}
+	} // Aqui termina
 }
