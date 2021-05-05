@@ -132,6 +132,7 @@ public class UInterface {
 				lugarEntrega, ultimaLocalizacion, remitente, destinatario, estadoRecibido);
 
 		encomiendas.add(nuevaEncomienda);
+		
 
 	}
 
@@ -147,7 +148,7 @@ public class UInterface {
 			}
 		}
 		System.out.println("Cliente no regitrado, por favor registrelo");
-		registrarCliente();
+		registrarCliente(); // que esta funcion retorne el cliente que se registra
 		return null;
 
 	}
