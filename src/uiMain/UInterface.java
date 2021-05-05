@@ -41,14 +41,14 @@ public class UInterface {
 
 		// MENU PRINCIPAL
 		do {
-			System.out.println("  ¡BIENVENIDO(A) A SUPERENVIOS!\n");
-			System.out.println("\t.:MENÚ PRINCIPAL:.\n");
+			System.out.println("  BIENVENIDO(A) A SUPERENVIOS!\n");
+			System.out.println("\t.:MENU PRINCIPAL:.\n");
 			System.out.println("1. Ver datos de la oficina");
-			System.out.println("2. Realizar nuevo envío");
+			System.out.println("2. Realizar nuevo envio");
 			System.out.println("3. Rastrear o ver detalles de envio");
-			System.out.println("4. Terminar sesión");
+			System.out.println("4. Terminar sesion");
 			System.out.println("5. ver encomiendas");
-			System.out.print("Ingresa el número de la opción deseada: ");
+			System.out.print("Ingresa el numero de la opcion deseada: ");
 			opcion = input.nextInt();
 
 			switch (opcion) {
@@ -132,7 +132,6 @@ public class UInterface {
 				lugarEntrega, ultimaLocalizacion, remitente, destinatario, estadoRecibido);
 
 		encomiendas.add(nuevaEncomienda);
-		
 
 	}
 
@@ -148,7 +147,7 @@ public class UInterface {
 			}
 		}
 		System.out.println("Cliente no regitrado, por favor registrelo");
-		registrarCliente(); // que esta funcion retorne el cliente que se registra
+		registrarCliente();
 		return null;
 
 	}
@@ -173,7 +172,7 @@ public class UInterface {
 		String id = input.next();
 		System.out.println("Ingrese el telefono del cliente");
 		String telefono = input.next();
-		System.out.println("Ingrese departamento de la localización (ubicaicon)");
+		System.out.println("Ingrese departamento de la localizaciï¿½n (ubicaicon)");
 		String localizcion = input.next();
 
 	}
