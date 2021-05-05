@@ -4,15 +4,16 @@ import java.util.LinkedList;
 import java.util.Scanner;
 import java.io.*;
 import gestorAplicacion.*;
+import gestorAplicacion.OficinaBodega;
 
 public class UInterface {
 
 	static Scanner input = new Scanner(System.in);
 
-	private static LinkedList<Empleado> empleados = new LinkedList<>();
-	private static LinkedList<Localizacion> localizaciones = new LinkedList<>();
-	private static LinkedList<Cliente> clientes = new LinkedList<>();
-	private static LinkedList<Encomienda> encomiendas = new LinkedList<>();
+	//private static LinkedList<Empleado> empleados = new LinkedList<>();
+	//private static LinkedList<Localizacion> localizaciones = new LinkedList<>();
+	//private static LinkedList<Cliente> clientes = new LinkedList<>();
+	//private static LinkedList<Encomienda> encomiendas = new LinkedList<>();
 	// private static LinkedList<OficinaBodega> oficinasBodegas = new
 	// LinkedList<>();
 
@@ -71,6 +72,8 @@ public class UInterface {
 		System.out.println(ofiBo.toString());
 	}
 
+	
+	// Metodo crear encomienda
 	private static void crearEncomienda() {
 		System.out.println("-------------------------");
 

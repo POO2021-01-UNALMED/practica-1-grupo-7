@@ -1,7 +1,10 @@
 package gestorAplicacion;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+
+import baseDatos.Deserializador;
 
 public class OficinaBodega implements Serializable  {
     
@@ -10,11 +13,18 @@ public class OficinaBodega implements Serializable  {
     private Localizacion ubicacion;
     private String telefono;
     private Empleado empleado;
-    public static List<Encomienda> encomiendas = new ArrayList<>();
-    public static List<Cliente> clientes = new ArrayList<>();
+	private static LinkedList<Empleado> empleados = new LinkedList<>();
+	private static LinkedList<Localizacion> localizaciones = new LinkedList<>();
+	private static LinkedList<Cliente> clientes = new LinkedList<>();
+	private static LinkedList<Encomienda> encomiendas = new LinkedList<>();
 
 
 	// CONSTRUCTOR
+	
+	public OficinaBodega() {
+		Deserializador.deserializar(this);
+	}
+	
     public OficinaBodega(
             String nombre, 
             Localizacion ubicacion, 
@@ -26,13 +36,14 @@ public class OficinaBodega implements Serializable  {
         this.empleado  = empleado;
     }
     
+    
         
     // TOSTRING
     @Override
     public String toString() {
-    	return "\n== Informaci�n de la empresa =="
+    	return "\n== Informacion de la empresa =="
     			+ "\nNombre: " + nombre
-    			+ "\nUbicaci�n: " + ubicacion
+    			+ "\nUbicacion: " + ubicacion
     			+ "\nTelefono: " + telefono
     			+ "\n\n== Datos del empleado actual ==\n" + empleado
     			+ "\n";
@@ -40,32 +51,9 @@ public class OficinaBodega implements Serializable  {
     
     //getters and setters
     
-    
-
 	public String getNombre() {
 		return nombre;
 	}
-
-
-	public static List<Encomienda> getEncomiendas() {
-		return encomiendas;
-	}
-
-
-	public static void setEncomiendas(List<Encomienda> encomiendas) {
-		OficinaBodega.encomiendas = encomiendas;
-	}
-
-
-	public static List<Cliente> getClientes() {
-		return clientes;
-	}
-
-
-	public static void setClientes(List<Cliente> clientes) {
-		OficinaBodega.clientes = clientes;
-	}
-
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
@@ -100,4 +88,52 @@ public class OficinaBodega implements Serializable  {
 	public void setEmpleado(Empleado empleado) {
 		this.empleado = empleado;
 	}
+
+
+	public static LinkedList<Empleado> getEmpleados() {
+		return empleados;
+	}
+	
+	// setters y getters listas
+	
+	public static void setEmpleados(LinkedList<Empleado> empleados) {
+		OficinaBodega.empleados = empleados;
+	}
+
+
+	public static LinkedList<Localizacion> getLocalizaciones() {
+		return localizaciones;
+	}
+
+
+	public static void setLocalizaciones(LinkedList<Localizacion> localizaciones) {
+		OficinaBodega.localizaciones = localizaciones;
+	}
+
+
+	public static LinkedList<Cliente> getClientes() {
+		return clientes;
+	}
+
+
+	public static void setClientes(LinkedList<Cliente> clientes) {
+		OficinaBodega.clientes = clientes;
+	}
+
+
+	public static LinkedList<Encomienda> getEncomiendas() {
+		return encomiendas;
+	}
+
+
+	public static void setEncomiendas(LinkedList<Encomienda> encomiendas) {
+		OficinaBodega.encomiendas = encomiendas;
+	}
+	
+
+	
+	
+	
+	
+	
 }
