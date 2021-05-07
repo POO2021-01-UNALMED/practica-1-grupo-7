@@ -44,22 +44,28 @@ public class Utils {
     }
     
     public static Date validarFormatoFecha(String f){
+        
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-                
-        try {
-            Date fecha = formatter.parse(f);
-            return fecha;
-        } catch (ParseException e) {
-            System.out.println("Ingresa la fecha en formato DD-MM-YYYY y sin espacios");
-            System.out.println("Ejemplo: 30-05-2020");
-        }
+        Date fecha;
+        
+        if (
+                f.matches("\\d{1}-\\d{1}-\\d{4}") 
+                || f.matches("\\d{2}-\\d{2}-\\d{4}")
+                || f.matches("\\d{1}-\\d{2}-\\d{4}")
+                || f.matches("\\d{2}-\\d{1}-\\d{4}")
+            ) {
+            try {
+                fecha = formatter.parse(f);
+                return fecha;
+            } catch (ParseException e) {  }
+        } 
         return null;
     }
     
     public static boolean comprobarFechasEnvEnt(Date envio, Date entrega){
         
         if (entrega.before(envio)){
-            System.out.println("La fecha de entrega debe ser mayor o igual a la fecha de env√≠o");
+            System.out.println("LA FECHA DE ENTREGA DEBE SER MAYOR O IGUAL A LA FECHA DE ENVÕO");
             return true;
         } else {
             return false;

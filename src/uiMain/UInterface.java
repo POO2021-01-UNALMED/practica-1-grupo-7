@@ -1,13 +1,8 @@
 package uiMain;
 
-import java.text.SimpleDateFormat;
 import java.util.Scanner;
-import java.util.Date;
 
 import gestorAplicacion.*;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.util.Locale;
 import utilidades.Utils;
 
 public class UInterface {
@@ -15,18 +10,6 @@ public class UInterface {
     private static Scanner input = new Scanner(System.in);
     
     public static void main(String[] args) {
-        
-        // PRUEBAS (BORRAR)
-//        Date envio;
-//        String fEnvio;
-//        do {
-//            System.out.print("Fecha de envio (DD-MM-AAAA): ");
-//            fEnvio = input.next();
-//            
-//            envio = Utils.validarFormatoFecha((fEnvio));
-//            System.out.println(envio);
-//            
-//        } while (envio == null);
         
         // VARIABLES AUXILIARES
         int opcion;
@@ -44,16 +27,16 @@ public class UInterface {
 
         OficinaBodega ofiBo = new OficinaBodega("Super Envios", local1, "8627365", empleadoSE);
 
-        // MEN√ö PRINCIPAL
+        // MEN⁄ PRINCIPAL
         do {
-            System.out.println("\n  ¬°BIENVENIDO(A) A SUPERENVIOS!\n");
-            System.out.println("\t.:MEN√ö PRINCIPAL:.\n");
-//            System.out.println("0. Administrar");  ¬øAGREGAR ADMIN?
+            System.out.println("\n  °BIENVENIDO(A) A SUPERENVIOS!\n");
+            System.out.println("\t.:MEN⁄ PRINCIPAL:.\n");
+            // System.out.println("0. Administrar");  øAGREGAR ADMIN?
             System.out.println("1. Ver datos de la oficina");
-            System.out.println("2. Realizar nuevo env√≠o");
+            System.out.println("2. Realizar nuevo envÌo");
             System.out.println("3. Rastrear o ver detalles de envio");
-            System.out.println("4. Terminar sesi√≥n");
-            System.out.print("Ingresa el n√∫mero de la opci√≥n deseada: ");
+            System.out.println("4. Terminar sesiÛn");
+            System.out.print("Ingresa el n˙mero de la opciÛn deseada: ");
             opcion = input.nextInt();
 
             switch (opcion) {
@@ -69,17 +52,17 @@ public class UInterface {
                     rastrearEnvio(idEnc);
                     break;
                 case 4:
-                    System.out.println("Sesi√≥n terminada con √©xito");
+                    System.out.println("SesiÛn terminada con Èxito");
                     
                     break;  // TODO: SERIALIZAR INFO
                 default:
-                    System.out.println("Opci√≥n no disponible");
+                    System.out.println("OpciÛn no disponible");
             }
 
         } while (opcion != 4);
     }
         
-    // M√âTODOS DE ACCI√ìN
+    // M…TODOS DE ACCI”N
     private static void datosOfi(OficinaBodega ofiBo) {
         System.out.println(ofiBo.toString());
     }
@@ -88,16 +71,17 @@ public class UInterface {
         Encomienda nuevaEnc = emp.crearEncomienda();
         double costoEnv = emp.calcularCostosEnv(nuevaEnc);
         
-        System.out.println("== ENCOMIEDA CREADA CON √âXITO ==");
+        System.out.println("== ENCOMIEDA CREADA CON …XITO ==");
         System.out.println(
-            "N√∫mero de gu√≠a (CONSERVE ESTE N√öMERO PARA HACER SUS CONSULTAS): " + nuevaEnc.getId()
+            "N˙mero de guÌa (CONSERVE ESTE N⁄MERO PARA HACER SUS CONSULTAS): " + nuevaEnc.getId()
         );
         System.out.print("Costos de envio: $" + costoEnv);
         
         System.out.println(
-            "\n1. Confirmar y realizar envio (NO SE PUEDEN HACER MODIFICACIONES UNA VEZ CONFIRMADO EL ENV√çO)"
+            "\n1. Confirmar y realizar envio (NO SE PUEDEN HACER MODIFICACIONES UNA VEZ CONFIRMADO EL ENVÕO)"
         );
         System.out.println("2. Cancelar (elimina los datos de la encomienda)");
+        System.out.print("Ingresa el n˙mero de la opciÛn deseada: ");
         int op = input.nextInt();
         
         switch (op) {
@@ -121,3 +105,4 @@ public class UInterface {
         System.out.println("\nEncomienda no encontrada");
     }
 }
+

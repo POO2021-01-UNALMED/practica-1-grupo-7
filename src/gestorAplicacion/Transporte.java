@@ -7,7 +7,7 @@ public class Transporte {
         if (!enc.getEstado().equals("Entregado")) {
             enc.setEstado("En camino");
             int time = (int) (20 + (Math.random() * (60 - 20)));
-            System.out.println("Tiempo estimado de entrega: " + time);  // TODO: BORRAR
+            System.out.println("Tiempo estimado de entrega: " + time + " segs");  // TODO: BORRAR
             new java.util.Timer().schedule(
                 new java.util.TimerTask() {
                 @Override

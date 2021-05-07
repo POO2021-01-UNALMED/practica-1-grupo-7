@@ -34,8 +34,8 @@ public class Empleado extends Persona implements Serializable {
 
         Cliente remitente, destinatario;
 
-        System.out.println("\n == INFORMACI脫N DEL REMITENTE ==");
-        System.out.print("N煤mero de identificaci贸n: ");
+        System.out.println("\n == INFORMACI覰 DEL REMITENTE ==");
+        System.out.print("N鷐ero de identificaci髇: ");
         idC = in.next();
         
         in.nextLine();  // VACIADO DEL BUFFER
@@ -57,7 +57,7 @@ public class Empleado extends Persona implements Serializable {
             municipC = in.nextLine();
             System.out.print("Barrio: ");
             barrioC = in.nextLine();
-            System.out.print("Direcci贸n: ");
+            System.out.print("Direcci髇: ");
             direC = in.nextLine();
 
             Localizacion direcRemi = new Localizacion(departC, municipC, barrioC, direC);
@@ -66,8 +66,8 @@ public class Empleado extends Persona implements Serializable {
             OficinaBodega.clientes.add(remitente);
         }
 
-        System.out.println("== INFORMACI脫N DEL DESTINATARIO ==");
-        System.out.print("N煤mero de identificaci贸n: ");
+        System.out.println("== INFORMACI覰 DEL DESTINATARIO ==");
+        System.out.print("N鷐ero de identificaci髇: ");
         idC = in.next();
         
         in.nextLine();  // VACIADO DEL BUFFER
@@ -89,7 +89,7 @@ public class Empleado extends Persona implements Serializable {
             municipC = in.nextLine();
             System.out.print("Barrio: ");
             barrioC = in.nextLine();
-            System.out.print("Direcci贸n: ");
+            System.out.print("Direcci髇: ");
             direC = in.nextLine();
 
             Localizacion direcDest = new Localizacion(departC, municipC, barrioC, direC);
@@ -98,7 +98,7 @@ public class Empleado extends Persona implements Serializable {
             OficinaBodega.clientes.add(destinatario);
         }
 
-        System.out.println("== INFORMACI脫N DE LA ENCOMIENDA ==");
+        System.out.println("== INFORMACI覰 DE LA ENCOMIENDA ==");
         do {
             System.out.print("Digita el peso: ");
             peso = in.nextFloat();
@@ -140,11 +140,16 @@ public class Empleado extends Persona implements Serializable {
         } while (Utils.validarPLAA(alto));
         
         in.nextLine();  // VACIADO DEL BUFFER
-        System.out.print("Descripci贸n del paquete: ");
+        System.out.print("Descripci髇 del paquete: ");
         descripcion = in.nextLine();
 
         Date envio;
         do {
+            System.out.println(
+                "\nUse el siguiente formato de fechas "
+                + "(note que no hay espacios): DD-MM-AAAA"
+                + "\nEjemplo: 31-05-2020"
+            );
             System.out.print("Fecha de envio (DD-MM-AAAA): ");
             fEnvio = in.next();
             
@@ -164,20 +169,20 @@ public class Empleado extends Persona implements Serializable {
         } while (Utils.comprobarFechasEnvEnt(envio, entrega));
   
         System.out.print(
-                "驴Asignar el lugar de entrega a la direcci贸n del destinatario? (Y/N): "
+                "緼signar el lugar de entrega a la direcci髇 del destinatario? (Y/N): "
         );
         if (in.next().toLowerCase().equals("y")) {
             dirEntrega = Utils.detallesCliente(idC).getUbicacion();
         } else {
             in.nextLine();  // VACIADO DEL BUFFER
-            System.out.println("== INFORMACI脫N DE ENTREGA ==");
+            System.out.println("== INFORMACI覰 DE ENTREGA ==");
             System.out.print("Departamento: ");
             departC = in.nextLine();
             System.out.print("Municipio: ");
             municipC = in.nextLine();
             System.out.print("Barrio: ");
             barrioC = in.nextLine();
-            System.out.print("Direcci贸n: ");
+            System.out.print("Direcci髇: ");
             direC = in.nextLine();
 
             dirEntrega = new Localizacion(departC, municipC, barrioC, direC);
@@ -194,7 +199,7 @@ public class Empleado extends Persona implements Serializable {
 
     public void realizarEnvio(Encomienda enc) {
         Transporte.trasportarEnc(enc);
-        System.out.println("== ENV脥O DESPACHADO CON 脡XTIO ==");
+        System.out.println("== ENV蚈 DESPACHADO CON 蒟TIO ==");
     }
 
     public double calcularCostosEnv(Encomienda enc) {

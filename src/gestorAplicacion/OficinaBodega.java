@@ -28,17 +28,6 @@ public class OficinaBodega implements Serializable {
         this.empleado = empleado;
     }
 
-    // TOSTRING
-    @Override
-    public String toString() {
-        return "\n== INFORMACIÓN DE LA EMPRESA =="
-                + "\nNombre: " + nombre
-                + "\nUbicación: " + ubicacion
-                + "\nTelefono: " + telefono
-                + "\n\n== DATOS DEL EMPLEADO ACTUAL ==\n" + empleado
-                + "\n";
-    }
-
     // GETTERS Y SETTERS
     public String getNombre() {
         return nombre;
@@ -86,5 +75,16 @@ public class OficinaBodega implements Serializable {
 
     public void setEmpleado(Empleado empleado) {
         this.empleado = empleado;
+    }
+    
+    // TOSTRING
+    @Override
+    public String toString() {
+        return "\n== INFORMACION DE LA EMPRESA =="
+                + "\nNombre: " + nombre
+                + "\nUbicacion: " + ubicacion
+                + "\nTelefono: " + telefono
+                + "\n\n== DATOS DEL EMPLEADO ACTUAL ==\n" + empleado
+                + "\n";
     }
 }
