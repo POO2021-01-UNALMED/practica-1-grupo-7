@@ -1,204 +1,123 @@
 package uiMain;
 
-import java.util.LinkedList;
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
-import java.io.*;
+import java.util.Date;
+
 import gestorAplicacion.*;
-import gestorAplicacion.OficinaBodega;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.util.Locale;
+import utilidades.Utils;
 
 public class UInterface {
+        
+    private static Scanner input = new Scanner(System.in);
+    
+    public static void main(String[] args) {
+        
+        // PRUEBAS (BORRAR)
+//        Date envio;
+//        String fEnvio;
+//        do {
+//            System.out.print("Fecha de envio (DD-MM-AAAA): ");
+//            fEnvio = input.next();
+//            
+//            envio = Utils.validarFormatoFecha((fEnvio));
+//            System.out.println(envio);
+//            
+//        } while (envio == null);
+        
+        // VARIABLES AUXILIARES
+        int opcion;
+        
+        // INFO DE PRUEBA
+        Empleado empleadoSE = new Empleado("Maria", "1037633515", 2000000, "01-01-2022");
 
-	static Scanner input = new Scanner(System.in);
+        Localizacion local1 = new Localizacion("Antioquia", "Carolina", "Barrio azul", "Cra 45b #80-76");
+        Localizacion local2 = new Localizacion("Cundinamarca", "Bogota", "Barrio morado", "Cll 170 av.caracas");
 
-	//private static LinkedList<Empleado> empleados = new LinkedList<>();
-	//private static LinkedList<Localizacion> localizaciones = new LinkedList<>();
-	//private static LinkedList<Cliente> clientes = new LinkedList<>();
-	//private static LinkedList<Encomienda> encomiendas = new LinkedList<>();
-	// private static LinkedList<OficinaBodega> oficinasBodegas = new
-	// LinkedList<>();
+        Cliente cliente1 = new Cliente("Esteban Bermudez", "7758", "2607070", local1);
+        Cliente cliente2 = new Cliente("Andrea Amaya", "1234567890", "2608080", local2);
+        OficinaBodega.clientes.add(cliente1);
+        OficinaBodega.clientes.add(cliente2);        
 
-	public static void main(String[] args) {
-		int opcion;
+        OficinaBodega ofiBo = new OficinaBodega("Super Envios", local1, "8627365", empleadoSE);
 
-		// Creando Objetos
-		Empleado empleado1 = new Empleado("Maria", "1037633515", 2000000, "01-01-2022");
-		Empleado empleado2 = new Empleado("Mario", "2037633516", 2000000, "01-01-2022");
-		empleados.add(empleado1);
-		empleados.add(empleado2);
+        // MENÚ PRINCIPAL
+        do {
+            System.out.println("\n  ¡BIENVENIDO(A) A SUPERENVIOS!\n");
+            System.out.println("\t.:MENÚ PRINCIPAL:.\n");
+//            System.out.println("0. Administrar");  ¿AGREGAR ADMIN?
+            System.out.println("1. Ver datos de la oficina");
+            System.out.println("2. Realizar nuevo envío");
+            System.out.println("3. Rastrear o ver detalles de envio");
+            System.out.println("4. Terminar sesión");
+            System.out.print("Ingresa el número de la opción deseada: ");
+            opcion = input.nextInt();
 
-		Localizacion local1 = new Localizacion("Antioquia", "Carolina", "Barrio azul", "Cra 45b #80-76");
-		Localizacion local2 = new Localizacion("Cundinamarca", "Bogota", "Barrio morado", "Cll 170 av.caracas");
-		localizaciones.add(local1);
-		localizaciones.add(local2);
+            switch (opcion) {
+                case 1:
+                    datosOfi(ofiBo);
+                    break;
+                case 2:
+                    nuevoEnvio(empleadoSE);
+                    break;
+                case 3:
+                    System.out.print("Digita el id del envio: ");
+                    int idEnc = input.nextInt();
+                    rastrearEnvio(idEnc);
+                    break;
+                case 4:
+                    System.out.println("Sesión terminada con éxito");
+                    
+                    break;  // TODO: SERIALIZAR INFO
+                default:
+                    System.out.println("Opción no disponible");
+            }
 
-		Cliente cliente1 = new Cliente("Esteban Bermudez", "7758", 2607070, local1);
-		Cliente cliente2 = new Cliente("Andrea Amaya", "1234567890", 2608080, local2);
-		clientes.add(cliente1);
-		clientes.add(cliente2);
-		
-		
-		// Nosotros solo tendremos UNA oficina !! 
-		OficinaBodega ofiBo = new OficinaBodega("Super Envios", local1, "8627365", empleado1);
+        } while (opcion != 4);
+    }
+        
+    // MÉTODOS DE ACCIÓN
+    private static void datosOfi(OficinaBodega ofiBo) {
+        System.out.println(ofiBo.toString());
+    }
 
-		// MENU PRINCIPAL
-		do {
-			System.out.println("  BIENVENIDO(A) A SUPERENVIOS!\n");
-			System.out.println("\t.:MENU PRINCIPAL:.\n");
-			System.out.println("1. Ver datos de la oficina");
-			System.out.println("2. Realizar nuevo envio");
-			System.out.println("3. Rastrear o ver detalles de envio");
-			System.out.println("4. Terminar sesion");
-			System.out.println("5. ver encomiendas");
-			System.out.print("Ingresa el numero de la opcion deseada: ");
-			opcion = input.nextInt();
+    private static void nuevoEnvio(Empleado emp) {
+        Encomienda nuevaEnc = emp.crearEncomienda();
+        double costoEnv = emp.calcularCostosEnv(nuevaEnc);
+        
+        System.out.println("== ENCOMIEDA CREADA CON ÉXITO ==");
+        System.out.println(
+            "Número de guía (CONSERVE ESTE NÚMERO PARA HACER SUS CONSULTAS): " + nuevaEnc.getId()
+        );
+        System.out.print("Costos de envio: $" + costoEnv);
+        
+        System.out.println(
+            "\n1. Confirmar y realizar envio (NO SE PUEDEN HACER MODIFICACIONES UNA VEZ CONFIRMADO EL ENVÍO)"
+        );
+        System.out.println("2. Cancelar (elimina los datos de la encomienda)");
+        int op = input.nextInt();
+        
+        switch (op) {
+            case 1:
+                emp.realizarEnvio(nuevaEnc);
+                break;
+            case 2:
+                Utils.borrarEncDB(nuevaEnc);
+                break;
+        }
+    }
 
-			switch (opcion) {
-			case 1:
-				datosOfi(ofiBo);
-				break;
-			case 2:
-				crearEncomienda();
-				break;
-			case 5:
-				verEncomiendas();
-				break;
-
-			}
-
-		} while (opcion != 5);
-	}
-
-	private static void datosOfi(OficinaBodega ofiBo) {
-		System.out.println(ofiBo.toString());
-	}
-
-	
-	// Metodo crear encomienda
-	private static void crearEncomienda() {
-		System.out.println("-------------------------");
-
-		System.out.println("Ingrese el peso");
-		int peso = input.nextInt();
-		if (peso <= 0) {
-			System.out.println("Peso invalido");
-			return;
-		}
-
-		System.out.println("Ingrese el largo");
-		int largo = input.nextInt();
-		if (largo <= 0) {
-			System.out.println("largo invalido");
-			return;
-		}
-
-		System.out.println("Ingrese el ancho");
-		int ancho = input.nextInt();
-		if (ancho <= 0) {
-			System.out.println("ancho invalido");
-			return;
-		}
-
-		System.out.println("Ingrese el alto");
-		int alto = input.nextInt();
-		if (alto <= 0) {
-			System.out.println("alto invalido");
-			return;
-		}
-
-		System.out.println("Ingrese descricion de la encomienda");
-		String descripcionEnc = input.next();
-		System.out.println("Ingrese fecha de envio");
-		String fechaEnvio = input.next();
-		System.out.println("Ingrese fecha de entrega");
-		String fechaEntrega = input.next();
-
-		System.out.println("Ingrese lugarEntrega (ciudad)");
-		String municipio = input.next();
-		Localizacion lugarEntrega = verificarLocalizacion(municipio);
-
-		System.out.println("Ingrese ultimaLocalizacion (ciudad)");
-		String municipio2 = input.next();
-		Localizacion ultimaLocalizacion = verificarLocalizacion(municipio2);
-
-		System.out.println("Ingrese Id de cliente quien envia");
-		String idcliente = input.next();
-		Cliente remitente = verificarCliente(idcliente);
-
-		System.out.println("Ingrese Id de cliente destinatario");
-		String idclientedestinatario = input.next();
-		Cliente destinatario = verificarCliente(idclientedestinatario);
-
-		System.out.println("Ingrese estado recibido");
-		Boolean estadoRecibido = input.nextBoolean();
-
-		Encomienda nuevaEncomienda = new Encomienda(peso, largo, ancho, alto, descripcionEnc, fechaEnvio, fechaEntrega,
-				lugarEntrega, ultimaLocalizacion, remitente, destinatario, estadoRecibido);
-
-		encomiendas.add(nuevaEncomienda);
-
-	}
-
-	private static void rastrearEnvio() {
-		// TODO: Despues lo miramos
-		return;
-	}
-
-	private static Cliente verificarCliente(String idcliente) {
-		for (Cliente cliente : clientes) {
-			if (cliente.getId().equals(idcliente)) {
-				return cliente;
-			}
-		}
-		System.out.println("Cliente no regitrado, por favor registrelo");
-		registrarCliente();
-		return null;
-
-	}
-
-	private static Localizacion verificarLocalizacion(String municipio) {
-		for (Localizacion loca : localizaciones) {
-			if (loca.getMunicipio().equals(municipio)) {
-				return loca;
-			}
-		}
-		System.out.println("Localizacion no regitrado, por favor registrelo");
-		// registrarLocalizacion()
-		return null;
-
-	}
-
-	private static void registrarCliente() {
-		System.out.println("EN CONSTRUCCION ------------------");
-		System.out.println("Ingrese el nombre del cliente ");
-		String nombre = input.next();
-		System.out.println("Ingrese Id de cliente");
-		String id = input.next();
-		System.out.println("Ingrese el telefono del cliente");
-		String telefono = input.next();
-		System.out.println("Ingrese departamento de la localizaci�n (ubicaicon)");
-		String localizcion = input.next();
-
-	}
-
-	/*
-	 * private static void verificacionDatos(Encomienda enc) {
-	 * System.out.println("== DATOS DE LA ENCOMIEDA CREADA ==");
-	 * System.out.println("1. Confirmar"); System.out.println("2. Editar");
-	 * System.out.println("3. Cancelar y borrar encomienda"); int opcion = new
-	 * Scanner(System.in).nextInt();
-	 * 
-	 * switch(opcion) { case 1: break; case 2: TODO: crear metodo
-	 * editarEnc(Encomienda enc) que permita editar cualquier atributo del paquete
-	 * 
-	 * case 3: enc = null; } }
-	 */
-
-	public static void verEncomiendas() {
-		// Temporal solo para verificar
-		for (Encomienda encomienda : encomiendas) {
-			System.out.println(encomiendas.toString());
-		}
-
-	}
-
+    private static void rastrearEnvio(int idEnc) {
+        for (Encomienda enc: OficinaBodega.encomiendas){
+            if (enc.getId() == idEnc){
+                System.out.println("\n == Encomienda No. " + idEnc + "== ");
+                System.out.println(enc);
+                return;
+            }
+        }
+        System.out.println("\nEncomienda no encontrada");
+    }
 }
