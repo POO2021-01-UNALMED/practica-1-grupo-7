@@ -171,7 +171,7 @@ public class Encomienda implements Serializable {
         return "Id: " + id
                 + "\n == REMITENTE == \n" + remitente
                 + "\n == DESTINATARIO == \n" + destinatario
-                + "\n == INFORMACIÓN DEL PAQUETE =="
+                + "\n == INFORMACION DEL PAQUETE =="
                 + "\nPeso: " + peso
                 + "\nLargo: " + largo
                 + "\nAncho: " + ancho

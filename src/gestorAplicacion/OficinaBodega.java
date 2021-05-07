@@ -7,10 +7,11 @@ import java.util.List;
 public class OficinaBodega implements Serializable {
 
     // ATRIBUTOS
+	private Administrador admin;
     private String nombre;
     public static Localizacion ubicacion;
     private String telefono;
-    private Empleado empleado;
+    public static Empleado empleado;
     
     // "BASE DE DATOS"
     public static List<Encomienda> encomiendas = new ArrayList<>();
@@ -20,12 +21,12 @@ public class OficinaBodega implements Serializable {
     public OficinaBodega(
             String nombre,
             Localizacion ubicacion,
-            String telefono,
-            Empleado empleado) {
+            String telefono, Administrador admin
+            ) {
         this.nombre = nombre;
         this.ubicacion = ubicacion;
         this.telefono = telefono;
-        this.empleado = empleado;
+        this.admin = admin;
     }
 
     // GETTERS Y SETTERS
@@ -53,13 +54,13 @@ public class OficinaBodega implements Serializable {
         this.nombre = nombre;
     }
 
-    public Localizacion getUbicacion() {
-        return ubicacion;
-    }
-
-    public void setUbicacion(Localizacion ubicacion) {
-        this.ubicacion = ubicacion;
-    }
+//    public Localizacion getUbicacion() {
+//        return ubicacion;
+//    }
+//
+//    public void setUbicacion(Localizacion ubicacion) {
+//        this.ubicacion = ubicacion;
+//    }
 
     public String getTelefono() {
         return telefono;
@@ -69,13 +70,13 @@ public class OficinaBodega implements Serializable {
         this.telefono = telefono;
     }
 
-    public Empleado getEmpleado() {
-        return empleado;
-    }
-
-    public void setEmpleado(Empleado empleado) {
-        this.empleado = empleado;
-    }
+//    public Empleado getEmpleado() {
+//        return empleado;
+//    }
+//
+//    public void setEmpleado(Empleado empleado) {
+//        this.empleado = empleado;
+//    }
     
     // TOSTRING
     @Override
@@ -84,7 +85,7 @@ public class OficinaBodega implements Serializable {
                 + "\nNombre: " + nombre
                 + "\nUbicacion: " + ubicacion
                 + "\nTelefono: " + telefono
-                + "\n\n== DATOS DEL EMPLEADO ACTUAL ==\n" + empleado
-                + "\n";
+                + "\n == REPRESENTANTE LEGAL == \n" 
+                + admin;
     }
 }

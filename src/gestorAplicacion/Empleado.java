@@ -34,7 +34,7 @@ public class Empleado extends Persona implements Serializable {
 
         Cliente remitente, destinatario;
 
-        System.out.println("\n == INFORMACIÓN DEL REMITENTE ==");
+        System.out.println("\n == INFORMACION DEL REMITENTE ==");
         System.out.print("Número de identificación: ");
         idC = in.next();
         
@@ -66,7 +66,7 @@ public class Empleado extends Persona implements Serializable {
             OficinaBodega.clientes.add(remitente);
         }
 
-        System.out.println("== INFORMACIÓN DEL DESTINATARIO ==");
+        System.out.println("== INFORMACION DEL DESTINATARIO ==");
         System.out.print("Número de identificación: ");
         idC = in.next();
         
@@ -98,7 +98,7 @@ public class Empleado extends Persona implements Serializable {
             OficinaBodega.clientes.add(destinatario);
         }
 
-        System.out.println("== INFORMACIÓN DE LA ENCOMIENDA ==");
+        System.out.println("== INFORMACION DE LA ENCOMIENDA ==");
         do {
             System.out.print("Digita el peso: ");
             peso = in.nextFloat();
@@ -175,7 +175,7 @@ public class Empleado extends Persona implements Serializable {
             dirEntrega = Utils.detallesCliente(idC).getUbicacion();
         } else {
             in.nextLine();  // VACIADO DEL BUFFER
-            System.out.println("== INFORMACIÓN DE ENTREGA ==");
+            System.out.println("== INFORMACION DE ENTREGA ==");
             System.out.print("Departamento: ");
             departC = in.nextLine();
             System.out.print("Municipio: ");
@@ -198,8 +198,8 @@ public class Empleado extends Persona implements Serializable {
     }
 
     public void realizarEnvio(Encomienda enc) {
-        Transporte.trasportarEnc(enc);
-        System.out.println("== ENVÍO DESPACHADO CON ÉXTIO ==");
+    	System.out.println("\n== ENVIO DESPACHADO CON EXTIO ==");
+    	Transporte.trasportarEnc(enc);
     }
 
     public double calcularCostosEnv(Encomienda enc) {

@@ -31,7 +31,7 @@ public class Utils {
         }
         return null;
     }
-    
+        
     public static void borrarEncDB(Encomienda enc){
         
         for (Encomienda encomienda: OficinaBodega.encomiendas){

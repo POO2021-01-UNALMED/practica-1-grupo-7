@@ -40,6 +40,6 @@ public class Cliente extends Persona implements Serializable {
         return "Nombre: " + getNombre()
                 + "\nId: " + getId()
                 + "\nTelefono: " + telefono
-                + "\nDirección: " + ((ubicacion != null) ? ubicacion : "");
+                + "\nDireccion: " + ((ubicacion != null) ? ubicacion : "");
     }
 }
