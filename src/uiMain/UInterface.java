@@ -148,8 +148,8 @@ public class UInterface {
     	int op;
     	do {
     		System.out.println("\n1. Ver información del empleado");
-        	System.out.println("2. Modificar salario");
-        	System.out.println("3. Renovar o modificar contrato");
+        	System.out.println("2. Modificar salario del empleado");
+        	System.out.println("3. Renovar o modificar contrato del empleado");
         	System.out.println("4. Despedir empleado");
         	System.out.println("5. Contratar empleado");
         	System.out.println("6. Validar y terminar");
