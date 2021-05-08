@@ -4,203 +4,165 @@ import java.io.Serializable;
 
 public class Encomienda implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private int id = 0;
+	private float peso;
+	private float largo;
+	private float ancho;
+	private float alto;
+	private String descripcionEnc;
+	private String fechaEnvio;
+	private String fechaEntrega;
+	private Localizacion lugarEntrega;
+	private Localizacion ultimaLocalizacion;
+	private Cliente remitente;
+	private Cliente destinatario;
+	private String estado;
 
-    // ATRIBUTOS
-    private static int encRealizadas = 0;
+	private double costosEnvio;
 
-    private int id;
-    private float peso;
-    private float largo;
-    private float ancho;
-    private float alto;
-    private String descripcionEnc;
-    private String fechaEnvio;
-    private String fechaEntrega;
-    private Localizacion lugarEntrega;
-    private Localizacion ultimaLocalizacion;
-    private Cliente remitente;
-    private Cliente destinatario;
-    private String estado;
+	// CONSTRUCTOR
+	public Encomienda(float peso, float largo, float ancho, float alto, String descripcionEnc, String fechaEnvio,
+			String fechaEntrega, Localizacion lugarEntrega, Cliente remitente, Cliente destinatario) {
+		this.peso = peso;
+		this.largo = largo;
+		this.ancho = ancho;
+		this.alto = alto;
+		this.descripcionEnc = descripcionEnc;
+		this.fechaEnvio = fechaEnvio;
+		this.fechaEntrega = fechaEntrega;
+		this.lugarEntrega = lugarEntrega;
+		this.remitente = remitente;
+		this.destinatario = destinatario;
 
-    private double costosEnvio;
+		ultimaLocalizacion = OficinaBodega.ubicacion;
+		estado = "Despachado";
 
-    // CONSTRUCTOR
-    public Encomienda(float peso, float largo, float ancho, float alto,
-            String descripcionEnc,
-            String fechaEnvio,
-            String fechaEntrega,
-            Localizacion lugarEntrega,
-            Cliente remitente, Cliente destinatario) {
-        this.peso = peso;
-        this.largo = largo;
-        this.ancho = ancho;
-        this.alto = alto;
-        this.descripcionEnc = descripcionEnc;
-        this.fechaEnvio = fechaEnvio;
-        this.fechaEntrega = fechaEntrega;
-        this.lugarEntrega = lugarEntrega;
-        this.remitente = remitente;
-        this.destinatario = destinatario;
+		OficinaBodega.encomiendasRealizadas++;
+		id = OficinaBodega.encomiendasRealizadas;
+	}
 
-        ultimaLocalizacion = OficinaBodega.ubicacion;
-        estado = "Despachado";
+	// GETTERS Y SETTERS
+	public int getId() {
+		return id;
+	}
 
-        encRealizadas++;
-        id = encRealizadas;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    // GETTERS Y SETTERS
-    public int getId() {
-        return id;
-    }
+	public String getDescripcionEnc() {
+		return descripcionEnc;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setDescripcionEnc(String descripcionEnc) {
+		this.descripcionEnc = descripcionEnc;
+	}
 
-    public String getDescripcionEnc() {
-        return descripcionEnc;
-    }
+	public String getFechaEnvio() {
+		return fechaEnvio;
+	}
 
-    public void setDescripcionEnc(String descripcionEnc) {
-        this.descripcionEnc = descripcionEnc;
-    }
+	public void setFechaEnvio(String fechaEnvio) {
+		this.fechaEnvio = fechaEnvio;
+	}
 
-    public String getFechaEnvio() {
-        return fechaEnvio;
-    }
+	public String getFechaEntrega() {
+		return fechaEntrega;
+	}
 
-    public void setFechaEnvio(String fechaEnvio) {
-        this.fechaEnvio = fechaEnvio;
-    }
+	public void setFechaEntrega(String fechaEntrega) {
+		this.fechaEntrega = fechaEntrega;
+	}
 
-    public String getFechaEntrega() {
-        return fechaEntrega;
-    }
+	public Localizacion getLugarEntrega() {
+		return lugarEntrega;
+	}
 
-    public void setFechaEntrega(String fechaEntrega) {
-        this.fechaEntrega = fechaEntrega;
-    }
+	public void setLugarEntrega(Localizacion lugarEntrega) {
+		this.lugarEntrega = lugarEntrega;
+	}
 
-    public Localizacion getLugarEntrega() {
-        return lugarEntrega;
-    }
+	public Localizacion getUltimaLocalizacion() {
+		return ultimaLocalizacion;
+	}
 
-    public void setLugarEntrega(Localizacion lugarEntrega) {
-        this.lugarEntrega = lugarEntrega;
-    }
+	public void setUltimaLocalizacion(Localizacion ultimaLocalizacion) {
+		this.ultimaLocalizacion = ultimaLocalizacion;
+	}
 
-    public Localizacion getUltimaLocalizacion() {
-        return ultimaLocalizacion;
-    }
+	public Cliente getRemitente() {
+		return remitente;
+	}
 
-    public void setUltimaLocalizacion(Localizacion ultimaLocalizacion) {
-        this.ultimaLocalizacion = ultimaLocalizacion;
-    }
+	public void setRemitente(Cliente remitente) {
+		this.remitente = remitente;
+	}
 
-    public Cliente getRemitente() {
-        return remitente;
-    }
+	public Cliente getDestinatario() {
+		return destinatario;
+	}
 
-    public void setRemitente(Cliente remitente) {
-        this.remitente = remitente;
-    }
+	public void setDestinatario(Cliente destinatario) {
+		this.destinatario = destinatario;
+	}
 
-    public Cliente getDestinatario() {
-        return destinatario;
-    }
+	public float getPeso() {
+		return peso;
+	}
 
-    public void setDestinatario(Cliente destinatario) {
-        this.destinatario = destinatario;
-    }
+	public void setPeso(float peso) {
+		this.peso = peso;
+	}
 
-    
+	public float getLargo() {
+		return largo;
+	}
 
-    public float getPeso() {
-        return peso;
-    }
+	public void setLargo(float largo) {
+		this.largo = largo;
+	}
 
-    public void setPeso(float peso) {
-        this.peso = peso;
-    }
+	public String getEstado() {
+		return estado;
+	}
 
-    public float getLargo() {
-        return largo;
-    }
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 
-    public void setLargo(float largo) {
-        this.largo = largo;
-    }
+	public float getAncho() {
+		return ancho;
+	}
 
-    public String getEstado() {
-        return estado;
-    }
+	public void setAncho(float ancho) {
+		this.ancho = ancho;
+	}
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
+	public float getAlto() {
+		return alto;
+	}
 
-    public float getAncho() {
-        return ancho;
-    }
+	public void setAlto(float alto) {
+		this.alto = alto;
+	}
 
-    public void setAncho(float ancho) {
-        this.ancho = ancho;
-    }
+	public double getCostosEnvio() {
+		return costosEnvio;
+	}
 
-    public float getAlto() {
-        return alto;
-    }
+	public void setCostosEnvio(double costosEnvio) {
+		this.costosEnvio = costosEnvio;
+	}
 
-    public void setAlto(float alto) {
-        this.alto = alto;
-    }
-
-    public double getCostosEnvio() {
-        return costosEnvio;
-    }
-
-    public void setCostosEnvio(double costosEnvio) {
-        this.costosEnvio = costosEnvio;
-    }
-
-    // TOSTRING
-    @Override
-    public String toString() {
-        return "Id: " + id
-                + "\n == REMITENTE == \n" + remitente
-                + "\n == DESTINATARIO == \n" + destinatario
-                + "\n == INFORMACION DEL PAQUETE =="
-                + "\nPeso: " + peso
-                + "\nLargo: " + largo
-                + "\nAncho: " + ancho
-                + "\nAlto: " + alto
-                + "\nDescripcion: " + descripcionEnc
-                + "\nFecha de envio: " + fechaEnvio
-                + "\nFecha aproximada de llegada: " + fechaEntrega
-                + "\nLugar de entrega: " + lugarEntrega
-                + "\nUltima localizacion: " + ultimaLocalizacion
-                + "\nCostos de envio: $" + costosEnvio
-                + "\nEstado: " + estado;
-    }
+	// TOSTRING
+	@Override
+	public String toString() {
+		return "Id: " + id + "\n == REMITENTE == \n" + remitente + "\n == DESTINATARIO == \n" + destinatario
+				+ "\n == INFORMACION DEL PAQUETE ==" + "\nPeso: " + peso + "\nLargo: " + largo + "\nAncho: " + ancho
+				+ "\nAlto: " + alto + "\nDescripcion: " + descripcionEnc + "\nFecha de envio: " + fechaEnvio
+				+ "\nFecha aproximada de llegada: " + fechaEntrega + "\nLugar de entrega: " + lugarEntrega
+				+ "\nUltima localizacion: " + ultimaLocalizacion + "\nCostos de envio: $" + costosEnvio + "\nEstado: "
+				+ estado;
+	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

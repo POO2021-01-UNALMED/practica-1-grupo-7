@@ -8,234 +8,222 @@ import utilidades.*;
 
 public class Empleado extends Persona implements Serializable {
 
-    // ATRIBUTOS AUXILIARES
-    private Scanner in = new Scanner(System.in);
+	// ATRIBUTOS
+	private float salario;
+	private String vigenciaContrato;
 
-    // ATRIBUTOS
-    private float salario;
-    private String vigenciaContrato;
+	// CONSTRUCTOR
+	public Empleado(String nombre, String id, float salario, String vigenciaContrato) {
+		super(nombre, id);
+		this.salario = salario;
+		this.vigenciaContrato = vigenciaContrato;
+	}
 
-    // CONSTRUCTOR (implementa herencia)
-    public Empleado(String nombre, String id, float salario, String vigenciaContrato) {
-        super(nombre, id);
-        this.salario = salario;
-        this.vigenciaContrato = vigenciaContrato;
-    }
+	// METODOS
+	public Encomienda crearEncomienda() {
 
-    // METODOS
-    public Encomienda crearEncomienda() {
+		Scanner in = new Scanner(System.in);
 
-        float peso, largo, ancho, alto;
-        String descripcion, fEnvio, fEntrega;
-        Localizacion dirEntrega;
+		float peso, largo, ancho, alto;
+		String descripcion, fEnvio, fEntrega;
+		Localizacion dirEntrega;
 
-        String nombreC, telefonoC, idC;
-        String departC, municipC, barrioC, direC;
+		String nombreC, telefonoC, idC;
+		String departC, municipC, barrioC, direC;
 
-        Cliente remitente, destinatario;
+		Cliente remitente, destinatario;
 
-        System.out.println("\n == INFORMACION DEL REMITENTE ==");
-        System.out.print("Número de identificación: ");
-        idC = in.next();
-        
-        in.nextLine();  // NO BORRAR
-        if (Utils.buscarClienteDB(idC)) {
-            System.out.println("Cliente hallado en base de datos");
-            System.out.println(Utils.detallesCliente(idC));
-            remitente = Utils.detallesCliente(idC);
-        } else {
-            System.out.print("Nombres y apellidos: ");
-            nombreC = in.nextLine();
-            System.out.print("Telefono: ");
-            telefonoC = in.next();
-            
-            in.nextLine();  // NO BORRAR
-            System.out.println("== RESIDENCIA DEL REMITENTE ==");
-            System.out.print("Departamento: ");
-            departC = in.nextLine();
-            System.out.print("Municipio: ");
-            municipC = in.nextLine();
-            System.out.print("Barrio: ");
-            barrioC = in.nextLine();
-            System.out.print("Dirección: ");
-            direC = in.nextLine();
+		System.out.println("\n == INFORMACION DEL REMITENTE ==");
+		System.out.print("Numero de identificacion: ");
+		idC = in.next();
 
-            Localizacion direcRemi = new Localizacion(departC, municipC, barrioC, direC);
-            remitente = new Cliente(nombreC, idC, telefonoC, direcRemi);
+		in.nextLine(); // NO BORRAR
+		if (Utils.buscarClienteDB(idC)) {
+			System.out.println("Cliente hallado en base de datos");
+			System.out.println(Utils.detallesCliente(idC));
+			remitente = Utils.detallesCliente(idC);
+		} else {
+			System.out.print("Nombres y apellidos: ");
+			nombreC = in.nextLine();
+			System.out.print("Telefono: ");
+			telefonoC = in.next();
 
-            OficinaBodega.clientes.add(remitente);
-        }
+			in.nextLine(); // NO BORRAR
+			System.out.println("== RESIDENCIA DEL REMITENTE ==");
+			System.out.print("Departamento: ");
+			departC = in.nextLine();
+			System.out.print("Municipio: ");
+			municipC = in.nextLine();
+			System.out.print("Barrio: ");
+			barrioC = in.nextLine();
+			System.out.print("Direccion: ");
+			direC = in.nextLine();
 
-        System.out.println("== INFORMACION DEL DESTINATARIO ==");
-        System.out.print("Número de identificación: ");
-        idC = in.next();
-        
-        in.nextLine();  // NO BORRAR
-        if (Utils.buscarClienteDB(idC)) {
-            System.out.println("Cliente hallado en base de datos");
-            System.out.println(Utils.detallesCliente(idC));
-            destinatario = Utils.detallesCliente(idC);
-        } else {
-            System.out.print("Nombres y apellidos: ");
-            nombreC = in.nextLine();
-            System.out.print("Telefono: ");
-            telefonoC = in.next();
-            
-            in.nextLine();  // NO BORRAR
-            System.out.println("== RESIDENCIA DEL DESTINATARIO ==");
-            System.out.print("Departamento: ");
-            departC = in.nextLine();
-            System.out.print("Municipio: ");
-            municipC = in.nextLine();
-            System.out.print("Barrio: ");
-            barrioC = in.nextLine();
-            System.out.print("Dirección: ");
-            direC = in.nextLine();
+			Localizacion direcRemi = new Localizacion(departC, municipC, barrioC, direC);
+			remitente = new Cliente(nombreC, idC, telefonoC, direcRemi);
 
-            Localizacion direcDest = new Localizacion(departC, municipC, barrioC, direC);
-            destinatario = new Cliente(nombreC, idC, telefonoC, direcDest);
+			OficinaBodega.clientes.add(remitente);
+		}
 
-            OficinaBodega.clientes.add(destinatario);
-        }
+		System.out.println("== INFORMACION DEL DESTINATARIO ==");
+		System.out.print("Numero de identificacion: ");
+		idC = in.next();
 
-        System.out.println("== INFORMACION DE LA ENCOMIENDA ==");
-        do {
-            System.out.print("Digita el peso: ");
-            peso = in.nextFloat();
+		in.nextLine(); // NO BORRAR
+		if (Utils.buscarClienteDB(idC)) {
+			System.out.println("Cliente hallado en base de datos");
+			System.out.println(Utils.detallesCliente(idC));
+			destinatario = Utils.detallesCliente(idC);
+		} else {
+			System.out.print("Nombres y apellidos: ");
+			nombreC = in.nextLine();
+			System.out.print("Telefono: ");
+			telefonoC = in.next();
 
-            if (peso < 0) {
-                System.out.println("Peso no permitido");
-            }
+			in.nextLine(); // NO BORRAR
+			System.out.println("== RESIDENCIA DEL DESTINATARIO ==");
+			System.out.print("Departamento: ");
+			departC = in.nextLine();
+			System.out.print("Municipio: ");
+			municipC = in.nextLine();
+			System.out.print("Barrio: ");
+			barrioC = in.nextLine();
+			System.out.print("Direccion: ");
+			direC = in.nextLine();
 
-        } while (Utils.validarPLAA(peso));
+			Localizacion direcDest = new Localizacion(departC, municipC, barrioC, direC);
+			destinatario = new Cliente(nombreC, idC, telefonoC, direcDest);
 
-        do {
-            System.out.print("Digita el largo: ");
-            largo = in.nextFloat();
+			OficinaBodega.clientes.add(destinatario);
+		}
 
-            if (largo < 0) {
-                System.out.println("Largo no permitido");
-            }
+		System.out.println("== INFORMACION DE LA ENCOMIENDA ==");
+		do {
+			System.out.print("Digita el peso: ");
+			peso = in.nextFloat();
 
-        } while (Utils.validarPLAA(largo));
+			if (peso < 0) {
+				System.out.println("Peso no permitido");
+			}
 
-        do {
-            System.out.print("Digita el ancho: ");
-            ancho = in.nextFloat();
+		} while (Utils.validarPLAA(peso));
 
-            if (ancho < 0) {
-                System.out.println("Ancho no permitido");
-            }
+		do {
+			System.out.print("Digita el largo: ");
+			largo = in.nextFloat();
 
-        } while (Utils.validarPLAA(ancho));
+			if (largo < 0) {
+				System.out.println("Largo no permitido");
+			}
 
-        do {
-            System.out.print("Digita el alto: ");
-            alto = in.nextFloat();
+		} while (Utils.validarPLAA(largo));
 
-            if (alto < 0) {
-                System.out.println("Alto no permitido");
-            }
+		do {
+			System.out.print("Digita el ancho: ");
+			ancho = in.nextFloat();
 
-        } while (Utils.validarPLAA(alto));
-        
-        in.nextLine();  // NO BORRAR
-        System.out.print("Descripción del paquete: ");
-        descripcion = in.nextLine();
+			if (ancho < 0) {
+				System.out.println("Ancho no permitido");
+			}
 
-        Date envio;
-        do {
-            System.out.println(
-                "\nUse el siguiente formato de fechas "
-                + "(note que no hay espacios): DD-MM-AAAA"
-                + "\nEjemplo: 31-05-2020"
-            );
-            System.out.print("Fecha de envio (DD-MM-AAAA): ");
-            fEnvio = in.next();
-            
-            envio = Utils.validarFormatoFecha((fEnvio));
-            
-        } while (envio == null);
-              
-        Date entrega;
-        do {
-            do {
-                System.out.print("Fecha de entrega aproximada (DD-MM-AAAA): ");  
-                fEntrega = in.next();
+		} while (Utils.validarPLAA(ancho));
 
-                entrega = Utils.validarFormatoFecha(fEntrega);
+		do {
+			System.out.print("Digita el alto: ");
+			alto = in.nextFloat();
 
-            } while (entrega == null);
-        } while (Utils.comprobarFechasEnvEnt(envio, entrega));
-  
-        System.out.print(
-                "¿Asignar el lugar de entrega a la dirección del destinatario? (Y/N): "
-        );
-        if (in.next().toLowerCase().equals("y")) {
-            dirEntrega = Utils.detallesCliente(idC).getUbicacion();
-        } else {
-            in.nextLine();  // NO BORRAR
-            System.out.println("== INFORMACION DE ENTREGA ==");
-            System.out.print("Departamento: ");
-            departC = in.nextLine();
-            System.out.print("Municipio: ");
-            municipC = in.nextLine();
-            System.out.print("Barrio: ");
-            barrioC = in.nextLine();
-            System.out.print("Dirección: ");
-            direC = in.nextLine();
+			if (alto < 0) {
+				System.out.println("Alto no permitido");
+			}
 
-            dirEntrega = new Localizacion(departC, municipC, barrioC, direC);
-        }
+		} while (Utils.validarPLAA(alto));
 
-        Encomienda enc = new Encomienda(
-                peso, largo, ancho, alto, descripcion, 
-                fEnvio, fEntrega, dirEntrega, remitente, destinatario);
+		in.nextLine(); // NO BORRAR
+		System.out.print("Descripcion del paquete: ");
+		descripcion = in.nextLine();
 
-        OficinaBodega.encomiendas.add(enc);
+		Date envio;
+		do {
+			System.out.println("\nUse el siguiente formato de fechas " + "(note que no hay espacios): DD-MM-AAAA"
+					+ "\nEjemplo: 31-05-2020");
+			System.out.print("Fecha de envio (DD-MM-AAAA): ");
+			fEnvio = in.next();
 
-        return enc;
-    }
+			envio = Utils.validarFormatoFecha((fEnvio));
 
-    public void realizarEnvio(Encomienda enc) {
-    	System.out.println("\n== ENVIO DESPACHADO CON EXTIO ==");
-    	Transporte.trasportarEnc(enc);
-    }
+		} while (envio == null);
 
-    public double calcularCostosEnv(Encomienda enc) {
-        double costoTotal;
-        costoTotal = enc.getAlto() * 200
-                + enc.getAncho() * 250
-                + enc.getPeso() * 520
-                + enc.getLargo() * 150;
+		Date entrega;
+		do {
+			do {
+				System.out.print("Fecha de entrega aproximada (DD-MM-AAAA): ");
+				fEntrega = in.next();
 
-        enc.setCostosEnvio(costoTotal);
-        return enc.getCostosEnvio();
-    }
+				entrega = Utils.validarFormatoFecha(fEntrega);
 
-    // GETTERS Y SETTERS
-    public float getSalario() {
-        return salario;
-    }
+			} while (entrega == null);
+		} while (Utils.comprobarFechasEnvEnt(envio, entrega));
 
-    public void setSalario(float s) {
-        salario = s;
-    }
+		System.out.print("Asignar el lugar de entrega a la direccion del destinatario (Y/N): ");
+		if (in.next().toLowerCase().equals("y")) {
+			dirEntrega = Utils.detallesCliente(idC).getUbicacion();
+		} else {
+			in.nextLine(); // NO BORRAR
+			System.out.println("== INFORMACION DE ENTREGA ==");
+			System.out.print("Departamento: ");
+			departC = in.nextLine();
+			System.out.print("Municipio: ");
+			municipC = in.nextLine();
+			System.out.print("Barrio: ");
+			barrioC = in.nextLine();
+			System.out.print("Direccion: ");
+			direC = in.nextLine();
 
-    public String getVigenciaContrato() {
-        return vigenciaContrato;
-    }
+			dirEntrega = new Localizacion(departC, municipC, barrioC, direC);
+		}
 
-    public void setVigenciaContrato(String vigenciaContrato) {
-        this.vigenciaContrato = vigenciaContrato;
-    }
+		Encomienda enc = new Encomienda(peso, largo, ancho, alto, descripcion, fEnvio, fEntrega, dirEntrega, remitente,
+				destinatario);
 
-    // TOSTRING
-    @Override
-    public String toString() {
-        return "Nombre: " + super.getNombre()
-                + "\nSuperEnviosId: " + super.getId()
-                + "\nSalario: $" + salario
-                + "\nVigencia del contrato: " + vigenciaContrato;
-    }
+		OficinaBodega.encomiendas.add(enc);
+
+		return enc;
+	}
+
+	public void realizarEnvio(Encomienda enc) {
+		System.out.println("\n== ENVIO DESPACHADO CON EXITO ==");
+		Transporte.trasportarEnc(enc);
+	}
+
+	public double calcularCostosEnv(Encomienda enc) {
+		double costoTotal;
+		costoTotal = enc.getAlto() * 500 + enc.getAncho() * 500 + enc.getPeso() * 520 + enc.getLargo() * 300;
+
+		enc.setCostosEnvio(costoTotal);
+		return enc.getCostosEnvio();
+	}
+
+	// GETTERS Y SETTERS
+	public float getSalario() {
+		return salario;
+	}
+
+	public void setSalario(float s) {
+		salario = s;
+	}
+
+	public String getVigenciaContrato() {
+		return vigenciaContrato;
+	}
+
+	public void setVigenciaContrato(String vigenciaContrato) {
+		this.vigenciaContrato = vigenciaContrato;
+	}
+
+	// TOSTRING
+	@Override
+	public String toString() {
+		return "Nombre: " + super.getNombre() + "\nSuperEnviosId: " + super.getId() + "\nSalario: $" + salario
+				+ "\nVigencia del contrato: " + vigenciaContrato;
+	}
 }

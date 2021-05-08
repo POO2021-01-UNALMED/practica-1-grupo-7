@@ -4,74 +4,66 @@ import java.io.Serializable;
 
 public class Localizacion implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	// ATRIBUTOS
+	private String pais = "Colombia";
+	private String departamento;
+	private String municipio;
+	private String barrio;
+	private String direccion;
 
-    // ATRIBUTOS
-    private String pais = "Colombia";
-    private String departamento;
-    private String municipio;
-    private String barrio;
-    private String direccion;
+	// CONSTRUCTOR
+	public Localizacion(String departamento, String municipio, String barrio, String direccion) {
+		this.departamento = departamento;
+		this.municipio = municipio;
+		this.barrio = barrio;
+		this.direccion = direccion;
+	}
 
-    // CONSTRUCTOR
-    public Localizacion(
-            String departamento, String municipio,
-            String barrio, String direccion) {
-        this.departamento = departamento;
-        this.municipio = municipio;
-        this.barrio = barrio;
-        this.direccion = direccion;
-    }
+	// GETTERS Y SETTERS
+	public String getPais() {
+		return pais;
+	}
 
-    // TOSTRING
-    @Override
-    public String toString() {
+	public void setPais(String pais) {
+		this.pais = pais;
+	}
 
-        return direccion
-                + ", " + barrio
-                + ", " + municipio
-                + ", " + departamento
-                + ", " + pais;
-    }
+	public String getDepartamento() {
+		return departamento;
+	}
 
-    public String getPais() {
-        return pais;
-    }
+	public void setDepartamento(String departamento) {
+		this.departamento = departamento;
+	}
 
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
+	public String getMunicipio() {
+		return municipio;
+	}
 
-    public String getDepartamento() {
-        return departamento;
-    }
+	public void setMunicipio(String municipio) {
+		this.municipio = municipio;
+	}
 
-    public void setDepartamento(String departamento) {
-        this.departamento = departamento;
-    }
+	public String getBarrio() {
+		return barrio;
+	}
 
-    public String getMunicipio() {
-        return municipio;
-    }
+	public void setBarrio(String barrio) {
+		this.barrio = barrio;
+	}
 
-    public void setMunicipio(String municipio) {
-        this.municipio = municipio;
-    }
+	public String getDireccion() {
+		return direccion;
+	}
 
-    public String getBarrio() {
-        return barrio;
-    }
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
 
-    public void setBarrio(String barrio) {
-        this.barrio = barrio;
-    }
+	// TOSTRING
+	@Override
+	public String toString() {
 
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
+		return direccion + ", " + barrio + ", " + municipio + ", " + departamento + ", " + pais;
+	}
 }
