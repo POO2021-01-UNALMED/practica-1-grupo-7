@@ -175,7 +175,7 @@ public class UInterface {
         				System.out.println("Se ha alcanzado el limite de empleados");
         				break;
         			}
-        			input.nextLine();  // VACIADO DEL BUFFER
+        			input.nextLine();  // NO BORRAR
         			System.out.print("Nombre del empleado: ");
         			String nombre = input.nextLine();
         			System.out.print("ID del empleado: ");

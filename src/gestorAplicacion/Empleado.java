@@ -38,7 +38,7 @@ public class Empleado extends Persona implements Serializable {
         System.out.print("Número de identificación: ");
         idC = in.next();
         
-        in.nextLine();  // VACIADO DEL BUFFER
+        in.nextLine();  // NO BORRAR
         if (Utils.buscarClienteDB(idC)) {
             System.out.println("Cliente hallado en base de datos");
             System.out.println(Utils.detallesCliente(idC));
@@ -49,7 +49,7 @@ public class Empleado extends Persona implements Serializable {
             System.out.print("Telefono: ");
             telefonoC = in.next();
             
-            in.nextLine();  // VACIADO DEL BUFFER
+            in.nextLine();  // NO BORRAR
             System.out.println("== RESIDENCIA DEL REMITENTE ==");
             System.out.print("Departamento: ");
             departC = in.nextLine();
@@ -70,7 +70,7 @@ public class Empleado extends Persona implements Serializable {
         System.out.print("Número de identificación: ");
         idC = in.next();
         
-        in.nextLine();  // VACIADO DEL BUFFER
+        in.nextLine();  // NO BORRAR
         if (Utils.buscarClienteDB(idC)) {
             System.out.println("Cliente hallado en base de datos");
             System.out.println(Utils.detallesCliente(idC));
@@ -81,7 +81,7 @@ public class Empleado extends Persona implements Serializable {
             System.out.print("Telefono: ");
             telefonoC = in.next();
             
-            in.nextLine();  // VACIADO DEL BUFFER
+            in.nextLine();  // NO BORRAR
             System.out.println("== RESIDENCIA DEL DESTINATARIO ==");
             System.out.print("Departamento: ");
             departC = in.nextLine();
@@ -139,7 +139,7 @@ public class Empleado extends Persona implements Serializable {
 
         } while (Utils.validarPLAA(alto));
         
-        in.nextLine();  // VACIADO DEL BUFFER
+        in.nextLine();  // NO BORRAR
         System.out.print("Descripción del paquete: ");
         descripcion = in.nextLine();
 
@@ -174,7 +174,7 @@ public class Empleado extends Persona implements Serializable {
         if (in.next().toLowerCase().equals("y")) {
             dirEntrega = Utils.detallesCliente(idC).getUbicacion();
         } else {
-            in.nextLine();  // VACIADO DEL BUFFER
+            in.nextLine();  // NO BORRAR
             System.out.println("== INFORMACION DE ENTREGA ==");
             System.out.print("Departamento: ");
             departC = in.nextLine();
