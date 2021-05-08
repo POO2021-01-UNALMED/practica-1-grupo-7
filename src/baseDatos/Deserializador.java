@@ -2,50 +2,64 @@ package baseDatos;
 
 import java.io.*;
 import java.util.List;
-import matricula.Departamento;
-import matricula.Asignatura;
-import matricula.Alumno;
+
+import gestorAplicacion.*;
 
 public class Deserializador {
-	private static File rutaTemp = new File("src\\baseDatos\\temp");// ruta
-
-	public static void deserializar(Departamento dpto) {
-		File[] docs = rutaTemp.listFiles() ;
-		FileInputStream fis;
-		ObjectInputStream ois; 
-		
-		for(File file:docs) {
-			if(file.getAbsolutePath().contains("asignaturas")){
-				try {
-					fis = new FileInputStream(file);
-					ois = new ObjectInputStream(fis);	
-					dpto.setAsignaturas(List<Asignatura>) ois.readObject();
-
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				} catch (ClassNotFoundException e) {
-					e.printStackTrace();
-				}
-			}
-		
-		else if(file.getAbsolutePath().contains("alumnos")){
-				try {
-					fis = new FileInputStream(file);
-					ois = new ObjectInputStream(fis);	
-					dpto.setAlumnos(List<Alumno>); ois.readObject();
-
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				} catch (ClassNotFoundException e) {
-					e.printStackTrace();
-				}
-
-			}
-		}
-
-	}
+    
+    // ATRIBUTOS
+    private static String rutaGeneral = System.getProperty("user.dir")+"\\src\\baseDatos\\temp\\";
+    
+    // MÉTODOS DE DESERIALIZACIÓN
+    private static File rutaClientes = new File(rutaGeneral + "clientes.txt");
+    public static void deserializarClientes(){
+        FileInputStream fis;
+        ObjectInputStream ois;
+        try {
+            fis = new FileInputStream(rutaClientes);
+            ois = new ObjectInputStream(fis);
+            List<Cliente> clientes = (List<Cliente>) ois.readObject();
+            ois.close();
+            OficinaBodega.clientes = clientes;
+        } catch (IOException | ClassNotFoundException e) {  }
+    }
+    
+    private static File rutaEnc = new File(rutaGeneral + "encomiendas.txt");
+    public static void deserializarEncomiendas(){
+        FileInputStream fis;
+        ObjectInputStream ois;
+        try {
+            fis = new FileInputStream(rutaEnc);
+            ois = new ObjectInputStream(fis);
+            List<Encomienda> encomiendas = (List<Encomienda>) ois.readObject();
+            ois.close();
+            OficinaBodega.encomiendas = encomiendas;
+        } catch (IOException | ClassNotFoundException e) {  }
+    }
+    
+    private static File rutaEmp = new File(rutaGeneral + "empleado.txt");
+    public static void deserializarEmpleado(){
+        FileInputStream fis;
+        ObjectInputStream ois;
+        try {
+            fis = new FileInputStream(rutaEmp);
+            ois = new ObjectInputStream(fis);
+            Empleado emp = (Empleado) ois.readObject();
+            ois.close();
+            OficinaBodega.empleado = emp;
+        } catch (IOException | ClassNotFoundException e) {  }
+    }
+    
+    private static File rutaId = new File(rutaGeneral + "id.txt");
+    public static void deserializarConteoIdEncomienda(){
+        FileInputStream fis;
+        ObjectInputStream ois;
+        try {
+            fis = new FileInputStream(rutaId);
+            ois = new ObjectInputStream(fis);
+            int id = (int) ois.readObject();
+            ois.close();
+            OficinaBodega.encomiendasRealizadas = id;
+        } catch (IOException | ClassNotFoundException e) {  }
+    }
 }
