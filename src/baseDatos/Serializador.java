@@ -1,56 +1,48 @@
 package baseDatos;
 
-// librerías
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.PrintWriter;
+import java.io.*;
+import java.util.List;
 
-import gestorAplicacion.OficinaBodega; //
+import gestorAplicacion.*;
 
 public class Serializador {
-	
-	private static File rutaTemp = new File("src\\baseDatos\\temp");
-	
-	// Este es el método encargado de serializar las listas que estan creadas en la clase Depto
-	public static void serializar(OficinaBodega ofiBo) {
-		FileOutputStream fos;
-		ObjectOutputStream oos;
-		File[] docs = rutaTemp.listFiles();
-		PrintWriter pw;
-		
-		
-		for(File file : docs) {
-			try {
-				pw = new PrintWriter(file);
-			}catch(FileNotFoundException e ) {
-				e.printStackTrace();
-			}
-		}
-		
-		for(File file : docs) {
-			if(file.getAbsolutePath().contains("asignturas")) {
-				try {
-					fos = new FileOutputStream(file);
-					oos = new ObjectOutputStream(fos);
-					oos.writeObject(dpto.getAsiganturas());	
-				}catch (FileNotFoundException e) {
-					e.printStackTrace();
-				}
-			}else if(file.getAbsolutePath().contains("alumnos")) {
-				try {
-					fos = new FileOutputStream(file);
-					oos = new ObjectOutputStream(fos);
-					oos.writeObject(dpto.getAlumnos());	
-				}catch(FileNotFoundException e) {
-					e.printStackTrace();
-				}catch(IOException e) {
-					e.printStackTrace();
-				}	
-			}
-		}
-	} // Aqui termina
+    
+    // MÉTODOS DE SERIALIZACIÓN
+    public static void serializarClientes(List<Cliente> clientes) {
+        try {
+            ObjectOutputStream file = new ObjectOutputStream(new FileOutputStream("src\\baseDatos\\temp\\clientes.txt"));
+            file.writeObject(clientes);
+            file.close();
+
+        } catch (IOException e) {  } 
+   }
+    
+    public static void serializarEnc(List<Encomienda> encomiedas) {
+        try {
+            ObjectOutputStream file = new ObjectOutputStream(new FileOutputStream("src\\baseDatos\\temp\\encomiendas.txt"));
+            file.writeObject(encomiedas);
+            file.close();
+
+        } catch (IOException e) {  } 
+   }
+    
+    public static void serializarEmp(Empleado emp) {
+        try {
+            ObjectOutputStream file = new ObjectOutputStream(new FileOutputStream("src\\baseDatos\\temp\\empleado.txt"));
+            file.writeObject(emp);
+            file.close();
+
+        } catch (IOException e) {  } 
+   }
+    
+    public static void serializarConteoIdEnc(int id) {
+        try {
+            ObjectOutputStream file = new ObjectOutputStream(new FileOutputStream("src\\baseDatos\\temp\\id.txt"));
+            file.writeObject(id);
+            file.close();
+
+        } catch (IOException e) {  } 
+    }
 }
+       
+        
