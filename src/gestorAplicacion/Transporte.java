@@ -1,6 +1,6 @@
 package gestorAplicacion;
 
-public class Transporte {
+abstract class Transporte {
 
 	// MÉTODOS
 	public static void trasportarEnc(Encomienda enc) {

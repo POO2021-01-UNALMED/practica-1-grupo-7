@@ -5,8 +5,8 @@ import java.io.Serializable;
 public class Persona implements Serializable {
 
 	// ATRIBUTOS
-	private String nombre;  
-	private final String id;  // Quitar final si sale error
+	protected String nombre;  
+	protected final String id;  // Quitar final si sale error
 
 	// CONSTRUCTOR
 	public Persona(String nombre, String id) {
