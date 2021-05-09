@@ -81,7 +81,11 @@ public class OficinaBodega implements Serializable {
 	// TOSTRING
 	@Override
 	public String toString() {
-		return "\n== INFORMACION DE LA EMPRESA ==" + "\nNombre: " + nombre + "\nUbicacion: " + ubicacion
-				+ "\nTelefono: " + telefono + "\n == REPRESENTANTE LEGAL == \n" + admin;
+		return "\n== INFORMACION DE LA EMPRESA ==" 
+				+ "\nNombre: " + nombre 
+				+ "\nUbicacion: " + ubicacion
+				+ "\nTelefono: " + telefono 
+				+ "\nEmpleado actual: " + empleado.getNombre()
+				+ "\n == REPRESENTANTE LEGAL == \n" + admin;
 	}
 }

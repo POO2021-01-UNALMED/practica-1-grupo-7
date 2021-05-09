@@ -22,13 +22,13 @@ public class UInterface {
 
 		// VARIABLES AUXILIARES
 		int opcion;
-
+		
 		// MENU PRINCIPAL
+		System.out.println("\n  BIENVENIDO(A) A SUPERENVIOS");
 		do {
-			System.out.println("\n  BIENVENIDO(A) A SUPERENVIOS \n");
-			System.out.println("\t.:MENU PRINCIPAL:.\n");
+			System.out.println("\n\t.:MENU PRINCIPAL:.\n");
 			System.out.println("0. Administrar");
-			System.out.println("1. Ver datos de la oficina");
+			System.out.println("1. Informacion general de la empresa");
 			System.out.println("2. Realizar nuevo envio");
 			System.out.println("3. Rastrear o ver detalles de envio");
 			System.out.println("4. Informacion general de envios realizados");
@@ -79,7 +79,7 @@ public class UInterface {
 	private static void nuevoEnvio(Empleado emp) {
 
 		if (OficinaBodega.empleado == null) {
-			System.out.println("\nNo hay empleado registrado");
+			System.out.println("\nNo hay empleado registrado para realizar esta acción");
 			return;
 		}
 
@@ -123,7 +123,8 @@ public class UInterface {
 			System.out.println("\nSin registros");
 			return;
 		}
-
+		
+		System.out.println("\n== HISTORIAL DE ENVIOS REALIZADOS ==");
 		for (Encomienda enc : OficinaBodega.encomiendas) {
 			if (enc != null) {
 				System.out.println("\nEncomienda No. " + enc.getId());
