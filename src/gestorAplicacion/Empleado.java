@@ -39,9 +39,10 @@ public class Empleado extends Persona implements Serializable {
 
 		in.nextLine(); // NO BORRAR
 		if (Utils.buscarClienteDB(idC)) {
-			System.out.println("Cliente hallado en base de datos");
+			System.out.println("\n .:Cliente hallado en base de datos:.");
 			System.out.println(Utils.detallesCliente(idC));
 			remitente = Utils.detallesCliente(idC);
+			modificarDatosCliente(remitente);
 		} else {
 			System.out.print("Nombres y apellidos: ");
 			nombreC = in.nextLine();
@@ -49,7 +50,7 @@ public class Empleado extends Persona implements Serializable {
 			telefonoC = in.next();
 
 			in.nextLine(); // NO BORRAR
-			System.out.println("== RESIDENCIA DEL REMITENTE ==");
+			System.out.println("\n== RESIDENCIA DEL REMITENTE ==");
 			System.out.print("Departamento: ");
 			departC = in.nextLine();
 			System.out.print("Municipio: ");
@@ -65,15 +66,16 @@ public class Empleado extends Persona implements Serializable {
 			OficinaBodega.clientes.add(remitente);
 		}
 
-		System.out.println("== INFORMACION DEL DESTINATARIO ==");
+		System.out.println("\n== INFORMACION DEL DESTINATARIO ==");
 		System.out.print("Numero de identificacion: ");
 		idC = in.next();
 
 		in.nextLine(); // NO BORRAR
 		if (Utils.buscarClienteDB(idC)) {
-			System.out.println("Cliente hallado en base de datos");
+			System.out.println("\n .:Cliente hallado en base de datos:.");
 			System.out.println(Utils.detallesCliente(idC));
 			destinatario = Utils.detallesCliente(idC);
+			modificarDatosCliente(destinatario);
 		} else {
 			System.out.print("Nombres y apellidos: ");
 			nombreC = in.nextLine();
@@ -81,7 +83,7 @@ public class Empleado extends Persona implements Serializable {
 			telefonoC = in.next();
 
 			in.nextLine(); // NO BORRAR
-			System.out.println("== RESIDENCIA DEL DESTINATARIO ==");
+			System.out.println("\n== RESIDENCIA DEL DESTINATARIO ==");
 			System.out.print("Departamento: ");
 			departC = in.nextLine();
 			System.out.print("Municipio: ");
@@ -97,7 +99,7 @@ public class Empleado extends Persona implements Serializable {
 			OficinaBodega.clientes.add(destinatario);
 		}
 
-		System.out.println("== INFORMACION DE LA ENCOMIENDA ==");
+		System.out.println("\n== INFORMACION DE LA ENCOMIENDA ==");
 		do {
 			System.out.print("Digita el peso: ");
 			peso = in.nextFloat();
@@ -169,7 +171,7 @@ public class Empleado extends Persona implements Serializable {
 			dirEntrega = Utils.detallesCliente(idC).getUbicacion();
 		} else {
 			in.nextLine(); // NO BORRAR
-			System.out.println("== INFORMACION DE ENTREGA ==");
+			System.out.println("\n== INFORMACION DE ENTREGA ==");
 			System.out.print("Departamento: ");
 			departC = in.nextLine();
 			System.out.print("Municipio: ");
@@ -201,6 +203,53 @@ public class Empleado extends Persona implements Serializable {
 
 		enc.setCostosEnvio(costoTotal);
 		return enc.getCostosEnvio();
+	}
+	
+	// SOBRECARGA DE MÉTODOS
+	public void modificarDatosCliente(Cliente cliente, String nombre, String telefono) {
+		cliente.setNombre(nombre);
+		cliente.setTelefono(telefono);
+	}
+
+	public void modificarDatosCliente(Cliente cliente, Localizacion ubicacion) {
+		cliente.setUbicacion(ubicacion);
+	}
+
+	private void modificarDatosCliente(Cliente cliente) {
+		Scanner in = new Scanner(System.in);
+
+		System.out.println("\n1. Aceptar y continuar");
+		System.out.println("2. Modificar informacion personal");
+		System.out.println("3. Modificar informacion de residencia");
+		System.out.print("Ingresa el numero de la opcion deseada: ");
+		int op = in.nextInt();
+		switch (op) {
+		case 1 -> {
+		}
+		case 2 -> {
+			in.nextLine(); // NO BORRAR
+			System.out.print("Nombres y apellidos: ");
+			String nombreC = in.nextLine();
+			System.out.print("Telefono: ");
+			String telefonoC = in.next();
+			modificarDatosCliente(cliente, nombreC, telefonoC);
+			modificarDatosCliente(cliente);
+		}
+		case 3 -> {
+			in.nextLine(); // NO BORRAR
+			System.out.print("Departamento: ");
+			String departC = in.nextLine();
+			System.out.print("Municipio: ");
+			String municipC = in.nextLine();
+			System.out.print("Barrio: ");
+			String barrioC = in.nextLine();
+			System.out.print("Direccion: ");
+			String direC = in.nextLine();
+			modificarDatosCliente(cliente, new Localizacion(departC, municipC, barrioC, direC));
+			modificarDatosCliente(cliente);
+		}
+		default -> System.out.println("Opcion invalida");
+		}
 	}
 
 	// GETTERS Y SETTERS

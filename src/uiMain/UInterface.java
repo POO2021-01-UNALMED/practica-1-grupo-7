@@ -92,7 +92,7 @@ public class UInterface {
 
 		System.out.println(
 				"\n1. Confirmar y realizar envio (NO SE PUEDEN HACER MODIFICACIONES UNA VEZ CONFIRMADO EL ENVIO)");
-		System.out.println("2. Cancelar (elimina los datos de la encomienda)");
+		System.out.println("2. Cancelar (ELIMINA LOS DATOS DE LA ENCOMIENDA)");
 		System.out.print("Ingresa el numero de la opcion deseada: ");
 		int op = input.nextInt();
 
