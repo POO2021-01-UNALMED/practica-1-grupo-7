@@ -5,8 +5,8 @@ import java.io.Serializable;
 public class Persona implements Serializable {
 
 	// ATRIBUTOS
-	private String nombre;
-	private String id;
+	private String nombre;  
+	private final String id;  // Quitar final si sale error
 
 	// CONSTRUCTOR
 	public Persona(String nombre, String id) {
@@ -25,10 +25,6 @@ public class Persona implements Serializable {
 
 	public String getId() {
 		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	// TOSTRING
