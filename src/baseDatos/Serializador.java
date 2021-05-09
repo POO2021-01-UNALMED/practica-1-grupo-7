@@ -7,7 +7,7 @@ import gestorAplicacion.*;
 
 public class Serializador {
     
-    // MÉTODOS DE SERIALIZACIÓN
+    // METODOS DE SERIALIZACION
     public static void serializarClientes(List<Cliente> clientes) {
         try {
             ObjectOutputStream file = new ObjectOutputStream(new FileOutputStream("src\\baseDatos\\temp\\clientes.txt"));

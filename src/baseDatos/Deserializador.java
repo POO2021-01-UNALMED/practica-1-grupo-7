@@ -10,7 +10,7 @@ public class Deserializador {
     // ATRIBUTOS
     private static String rutaGeneral = System.getProperty("user.dir")+"\\src\\baseDatos\\temp\\";
     
-    // MÉTODOS DE DESERIALIZACIÓN
+    // METODOS DE DESERIALIZACION
     private static File rutaClientes = new File(rutaGeneral + "clientes.txt");
     public static void deserializarClientes(){
         FileInputStream fis;
