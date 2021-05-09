@@ -37,7 +37,8 @@ public class Utils {
 		for (Encomienda encomienda : OficinaBodega.encomiendas) {
 			if (encomienda.getId() == enc.getId()) {
 				OficinaBodega.encomiendas.remove(enc);
-				System.out.println("Encomienda eliminada");
+				OficinaBodega.encomiendasRealizadas --;
+				System.out.println("\n== ENCOMIENDA ELIMINADA ==");
 				return;
 			}
 		}

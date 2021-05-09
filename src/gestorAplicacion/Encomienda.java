@@ -157,9 +157,17 @@ public class Encomienda implements Serializable {
 	// TOSTRING
 	@Override
 	public String toString() {
-		return "Id: " + id + "\n == REMITENTE == \n" + remitente + "\n == DESTINATARIO == \n" + destinatario
-				+ "\n == INFORMACION DEL PAQUETE ==" + "\nPeso: " + peso + "\nLargo: " + largo + "\nAncho: " + ancho
-				+ "\nAlto: " + alto + "\nDescripcion: " + descripcionEnc + "\nFecha de envio: " + fechaEnvio
+		return "Id: " + id 
+				+ "\n == REMITENTE == \n" 
+				+ remitente 
+				+ "\n == DESTINATARIO == \n" 
+				+ destinatario
+				+ "\n == INFORMACION DEL PAQUETE ==" 
+				+ "\nPeso (kg): " + peso 
+				+ "\nLargo (cm): " + largo 
+				+ "\nAncho (cm): " + ancho
+				+ "\nAlto (cm): " + alto 
+				+ "\nDescripcion: " + descripcionEnc + "\nFecha de envio: " + fechaEnvio
 				+ "\nFecha aproximada de llegada: " + fechaEntrega + "\nLugar de entrega: " + lugarEntrega
 				+ "\nUltima localizacion: " + ultimaLocalizacion + "\nCostos de envio: $" + costosEnvio + "\nEstado: "
 				+ estado;

@@ -59,8 +59,8 @@ public class Administrador extends Persona {
 		if (OficinaBodega.empleado == null) {
 			System.out.println("No hay empleado registrado");
 		} else {
-			System.out.print("Elimar empleado del sistema (Y/N): ");
-			if ((in.next().toLowerCase().equals("y"))) {
+			System.out.print("Elimar empleado del sistema (S/N): ");
+			if ((in.next().toLowerCase().equals("s"))) {
 				System.out.println("\n == EMPLEADO ELIMINADO DEL SISTEMA ==");
 				System.out.println(OficinaBodega.empleado);
 				OficinaBodega.empleado = null;

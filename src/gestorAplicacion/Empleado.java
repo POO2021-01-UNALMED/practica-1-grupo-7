@@ -2,6 +2,7 @@ package gestorAplicacion;
 
 import java.io.Serializable;
 import java.util.Scanner;
+
 import java.util.Date;
 
 import utilidades.*;
@@ -101,7 +102,7 @@ public class Empleado extends Persona implements Serializable {
 
 		System.out.println("\n== INFORMACION DE LA ENCOMIENDA ==");
 		do {
-			System.out.print("Digita el peso: ");
+			System.out.print("Digita el peso (kg): ");
 			peso = in.nextFloat();
 
 			if (peso < 0) {
@@ -111,7 +112,7 @@ public class Empleado extends Persona implements Serializable {
 		} while (Utils.validarPLAA(peso));
 
 		do {
-			System.out.print("Digita el largo: ");
+			System.out.print("Digita el largo (cm): ");
 			largo = in.nextFloat();
 
 			if (largo < 0) {
@@ -121,7 +122,7 @@ public class Empleado extends Persona implements Serializable {
 		} while (Utils.validarPLAA(largo));
 
 		do {
-			System.out.print("Digita el ancho: ");
+			System.out.print("Digita el ancho (cm): ");
 			ancho = in.nextFloat();
 
 			if (ancho < 0) {
@@ -131,7 +132,7 @@ public class Empleado extends Persona implements Serializable {
 		} while (Utils.validarPLAA(ancho));
 
 		do {
-			System.out.print("Digita el alto: ");
+			System.out.print("Digita el alto (cm): ");
 			alto = in.nextFloat();
 
 			if (alto < 0) {
@@ -166,8 +167,8 @@ public class Empleado extends Persona implements Serializable {
 			} while (entrega == null);
 		} while (Utils.comprobarFechasEnvEnt(envio, entrega));
 
-		System.out.print("Asignar el lugar de entrega a la direccion del destinatario (Y/N): ");
-		if (in.next().toLowerCase().equals("y")) {
+		System.out.print("Asignar el lugar de entrega a la direccion del destinatario (S/N): ");
+		if (in.next().toLowerCase().equals("s")) {
 			dirEntrega = Utils.detallesCliente(idC).getUbicacion();
 		} else {
 			in.nextLine(); // NO BORRAR
@@ -199,7 +200,10 @@ public class Empleado extends Persona implements Serializable {
 
 	public double calcularCostosEnv(Encomienda enc) {
 		double costoTotal;
-		costoTotal = enc.getAlto() * 500 + enc.getAncho() * 500 + enc.getPeso() * 520 + enc.getLargo() * 300;
+		costoTotal = enc.getAlto() * 5 
+					+ enc.getAncho() * 5 
+					+ enc.getPeso() * 5.2 
+					+ enc.getLargo() * 3;
 
 		enc.setCostosEnvio(costoTotal);
 		return enc.getCostosEnvio();
@@ -217,39 +221,42 @@ public class Empleado extends Persona implements Serializable {
 
 	private void modificarDatosCliente(Cliente cliente) {
 		Scanner in = new Scanner(System.in);
+		int op;
 
-		System.out.println("\n1. Aceptar y continuar");
-		System.out.println("2. Modificar informacion personal");
-		System.out.println("3. Modificar informacion de residencia");
-		System.out.print("Ingresa el numero de la opcion deseada: ");
-		int op = in.nextInt();
-		switch (op) {
-		case 1 -> {
-		}
-		case 2 -> {
-			in.nextLine(); // NO BORRAR
-			System.out.print("Nombres y apellidos: ");
-			String nombreC = in.nextLine();
-			System.out.print("Telefono: ");
-			String telefonoC = in.next();
-			modificarDatosCliente(cliente, nombreC, telefonoC);
-			modificarDatosCliente(cliente);
-		}
-		case 3 -> {
-			in.nextLine(); // NO BORRAR
-			System.out.print("Departamento: ");
-			String departC = in.nextLine();
-			System.out.print("Municipio: ");
-			String municipC = in.nextLine();
-			System.out.print("Barrio: ");
-			String barrioC = in.nextLine();
-			System.out.print("Direccion: ");
-			String direC = in.nextLine();
-			modificarDatosCliente(cliente, new Localizacion(departC, municipC, barrioC, direC));
-			modificarDatosCliente(cliente);
-		}
-		default -> System.out.println("Opcion invalida");
-		}
+		do {
+			System.out.println("\n1. Aceptar y continuar");
+			System.out.println("2. Modificar informacion personal");
+			System.out.println("3. Modificar informacion de residencia");
+			System.out.print("Ingresa el numero de la opcion deseada: ");
+			op = in.nextInt();
+			switch (op) {
+			case 1 -> {
+			}
+			case 2 -> {
+				in.nextLine(); // NO BORRAR
+				System.out.print("Nombres y apellidos: ");
+				String nombreC = in.nextLine();
+				System.out.print("Telefono: ");
+				String telefonoC = in.next();
+				modificarDatosCliente(cliente, nombreC, telefonoC);
+				modificarDatosCliente(cliente);
+			}
+			case 3 -> {
+				in.nextLine(); // NO BORRAR
+				System.out.print("Departamento: ");
+				String departC = in.nextLine();
+				System.out.print("Municipio: ");
+				String municipC = in.nextLine();
+				System.out.print("Barrio: ");
+				String barrioC = in.nextLine();
+				System.out.print("Direccion: ");
+				String direC = in.nextLine();
+				modificarDatosCliente(cliente, new Localizacion(departC, municipC, barrioC, direC));
+				modificarDatosCliente(cliente);
+			}
+			default -> System.out.println("Opcion invalida");
+			}
+		} while (op != 1);
 	}
 
 	// GETTERS Y SETTERS

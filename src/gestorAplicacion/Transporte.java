@@ -14,7 +14,7 @@ public class Transporte {
 				public void run() {
 					enc.setEstado("Entregado");
 					enc.setUltimaLocalizacion(enc.getLugarEntrega());
-					System.out.println("\n\n== LA ENCOMIENDA NO." + enc.getId() + " HA SIDO ENTREDADA CON EXITO == \n");
+					System.out.println("\n\n== LA ENCOMIENDA NO." + enc.getId() + " HA SIDO ENTREGADA CON EXITO == \n");
 				}
 			}, time * 1000);
 		}
@@ -32,7 +32,7 @@ public class Transporte {
 				public void run() {
 					enc.setEstado("Entregado");
 					enc.setUltimaLocalizacion(enc.getLugarEntrega());
-					System.out.println("\n\n== LA ENCOMIENDA NO." + enc.getId() + " HA SIDO ENTREDADA CON EXITO == \n");
+					System.out.println("\n\n== LA ENCOMIENDA NO." + enc.getId() + " HA SIDO ENTREGADA CON EXITO == \n");
 				}
 			}, time * 1000);
 		}

@@ -85,7 +85,7 @@ public class OficinaBodega implements Serializable {
 				+ "\nNombre: " + nombre 
 				+ "\nUbicacion: " + ubicacion
 				+ "\nTelefono: " + telefono 
-				+ "\nEmpleado actual: " + empleado.getNombre()
-				+ "\n == REPRESENTANTE LEGAL == \n" + admin;
+				+ ((empleado != null) ? "\nEmpleado actual: " + empleado.getNombre() : "")
+				+ "\n== GERENTE Y REPRESENTANTE LEGAL == \n" + admin;
 	}
 }
