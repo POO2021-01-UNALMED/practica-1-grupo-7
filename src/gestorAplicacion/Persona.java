@@ -9,6 +9,10 @@ public class Persona implements Serializable {
 	protected final String id;  // Quitar final si sale error
 
 	// CONSTRUCTOR
+	public Persona(String nombre) {
+		this(nombre, "No especifica");
+	}
+	
 	public Persona(String nombre, String id) {
 		this.nombre = nombre;
 		this.id = id;

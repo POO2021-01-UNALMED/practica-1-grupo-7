@@ -1,7 +1,6 @@
 package uiMain;
 
 import java.util.Scanner;
-
 import gestorAplicacion.*;
 import utilidades.Utils;
 
@@ -89,21 +88,28 @@ public class UInterface {
 		System.out.println("\n== ENCOMIEDA CREADA CON EXITO ==");
 		System.out.println("Numero de guia (CONSERVE ESTE NUMERO PARA HACER SUS CONSULTAS): " + nuevaEnc.getId());
 		System.out.print("COSTOS DE ENVIO: $" + costoEnv);
-
-		System.out.println(
-				"\n1. Confirmar y realizar envio (NO SE PUEDEN HACER MODIFICACIONES UNA VEZ CONFIRMADO EL ENVIO)");
-		System.out.println("2. Cancelar (ELIMINA LOS DATOS DE LA ENCOMIENDA)");
-		System.out.print("Ingresa el numero de la opcion deseada: ");
-		int op = input.nextInt();
-
-		switch (op) {
-		case 1:
-			emp.realizarEnvio(nuevaEnc);
-			break;
-		case 2:
-			Utils.borrarEncDB(nuevaEnc);
-			break;
-		}
+		
+		int op;
+		do {
+			System.out.println(
+					"\n1. Confirmar y realizar envio (NO SE PUEDEN HACER MODIFICACIONES UNA VEZ CONFIRMADO EL ENVIO)");
+			System.out.println("2. Cancelar (ELIMINA LOS DATOS DE LA ENCOMIENDA)");
+			System.out.print("Ingresa el numero de la opcion deseada: ");
+			op = input.nextInt();
+			
+			op = (op == 1 || op == 2) ? op : 3;
+			
+			switch (op) {
+			case 1:
+				emp.realizarEnvio(nuevaEnc);
+				break;
+			case 2:
+				Utils.borrarEncDB(nuevaEnc);
+				break;
+			default:
+				System.out.println("\n== OOPS!!... POR FAVOR INTENTA DE NUEVO ==");
+			}
+		} while (op == 3 );
 	}
 
 	private static void rastrearEnvio(int idEnc) {

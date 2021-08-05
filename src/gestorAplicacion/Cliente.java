@@ -12,6 +12,10 @@ public class Cliente extends Persona implements Serializable {
 	private Localizacion ubicacion;
 
 	// CONSTRUCTOR
+	public Cliente(String nombre, Localizacion ubicacion) {
+		this(nombre, "No especifica", "No especifica", ubicacion);
+	}
+	
 	public Cliente(String nombre, String id, String telefono, Localizacion ubicacion) {
 		super(nombre, id);
 		this.telefono = telefono;

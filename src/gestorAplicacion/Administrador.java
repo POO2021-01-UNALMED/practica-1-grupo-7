@@ -10,6 +10,10 @@ public class Administrador extends Persona {
 	private Scanner in = new Scanner(System.in);
 
 	// CONSTRUCTOR
+	public Administrador(String nombre) {
+		this(nombre, "No especifica");
+	}
+	
 	public Administrador(String nombre, String id) {
 		super(nombre, id);
 	}
