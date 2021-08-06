@@ -11,6 +11,10 @@ public class Utils {
 	public static boolean validarPLAA(float valor) { // PLAA: Peso, largo, ancho, alto
 		return valor < 0;
 	}
+	
+	public static boolean validarPLAA(double valor) { // PLAA: Peso, largo, ancho, alto
+		return valor < 0;
+	}
 
 	public static boolean buscarClienteDB(String idC) {
 
