@@ -3,6 +3,7 @@ package vista;
 import java.util.Optional;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -21,7 +22,7 @@ import javafx.stage.StageStyle;
 
 public class Acciones {
 
-	public static VBox base = new VBox(20);
+	public static VBox base = new VBox(50);
 	public MenuBar mainMenuBarActions = new MenuBar();;
 	public static Label mainTitle;
 	public static Label about;
@@ -31,20 +32,23 @@ public class Acciones {
 
 		Menu archivo = new Menu("Archivo");
 		MenuItem salir = new MenuItem("Salir");
+		salir.setOnAction(new Eventos());
 		MenuItem regresar = new MenuItem("Regresar");
+		regresar.setOnAction(new Eventos());
 		archivo.getItems().addAll(regresar, salir);
 
 		Menu procesos = new Menu("Procesos y consultas");
-		MenuItem fun1 = new MenuItem("Administrar");
-		fun1.setOnAction(new Eventos());
-		MenuItem fun2 = new MenuItem("Realizar Envio");
-		MenuItem fun3 = new MenuItem("Rastrear o ver detalles de envío");
-		MenuItem fun4 = new MenuItem("Historial de envíos realizados");
+		MenuItem accion1 = new MenuItem("Administrar");
+		accion1.setOnAction(new Eventos());
+		MenuItem accion2 = new MenuItem("Realizar Envio");
+		MenuItem accion3 = new MenuItem("Rastrear o ver detalles de envío");
+		MenuItem accion4 = new MenuItem("Historial de envíos realizados");
 
-		procesos.getItems().addAll(fun1, fun2, fun3, fun4);
+		procesos.getItems().addAll(accion1, accion2, accion3, accion4);
 
 		Menu ayuda = new Menu("Ayuda");
 		MenuItem acerca = new MenuItem("Acerca de");
+		acerca.setOnAction(new Eventos());
 		ayuda.getItems().add(acerca);
 		mainMenuBarActions.getMenus().addAll(archivo, procesos, ayuda);
 
@@ -96,6 +100,23 @@ class Eventos implements EventHandler<ActionEvent> {
 					alert.showAndWait();
 				}
 			}
+		} else if (accion.getText().equals("Acerca de")) {
+			Alert creditos = new Alert(AlertType.INFORMATION);
+			creditos.setTitle("Creado por");
+			creditos.setHeaderText("David Alejandro Ruiz González");
+			creditos.setContentText("Versión: Alpha 1.2.6");
+			creditos.setGraphic(new ImageView(
+					new Image(getClass().getResourceAsStream("./Imagenes/SEDavid3.jpg"), 50, 50, false, false)));
+			creditos.getDialogPane()
+					.setStyle("-fx-font-size: 18;-fx-font-family: 'Arial',25 ; -fx-background-color: #FFF ;");
+			creditos.showAndWait();
+		} else if (accion.getText().equals("Regresar")) {
+			Image imagen = new Image(getClass().getResourceAsStream("./Imagenes/SuperEnvios.jpg"), 350, 250, false, false);
+			GUIMain.mainLabel.setGraphic(new ImageView(imagen));
+			GUIMain.mainLabel.setText("");
+			GUIMain.mainStage.setScene(GUIMain.mainScene);
+		} else if (accion.getText().equals("Salir")) {
+			Platform.exit();
 		}
 	}
 }

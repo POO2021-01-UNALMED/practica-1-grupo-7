@@ -17,6 +17,7 @@ import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
@@ -63,6 +64,26 @@ public class GUIMain extends Application {
 		BorderPane.setAlignment(mainLabel, Pos.TOP_CENTER);
 		BorderPane.setAlignment(btnStart, Pos.TOP_CENTER);
 		imagenesSE.setTop(mainLabel);
+		imagenesSE.setOnMouseEntered(new EventHandler<MouseEvent>() {
+		    public void handle(MouseEvent e) {
+		        Image SEImagen1 = new Image(getClass().getResourceAsStream("./Imagenes/SE1.jpg"), 350, 250, false, false);
+		        Image SEImagen2 = new Image(getClass().getResourceAsStream("./Imagenes/SE2.jpg"), 350, 250, false, false);
+		        Image SEImagen3 = new Image(getClass().getResourceAsStream("./Imagenes/SE3.jpg"), 350, 250, false, false);
+		        Image SEImagen4 = new Image(getClass().getResourceAsStream("./Imagenes/SE4.png"), 350, 250, false, false);
+		        Image[] SEImagenes = { imagen, SEImagen1, SEImagen2, SEImagen3, SEImagen4 };
+		        int imagenNum = (int) (Math.random() * 4 + 1);
+
+		        if (mainLabel.getGraphic() == null) {
+		            mainLabel.setText("");
+		            mainLabel.setGraphic(new ImageView(imagen));
+		        }
+
+		        if (!mainLabel.getGraphic().equals(SEImagenes[imagenNum])) {
+		            mainLabel.setGraphic(new ImageView(SEImagenes[imagenNum]));
+		        }
+
+		    }
+		});
 		mainLeft.setStyle("-fx-background-color: #04843c;");
 		imagenesSE.setStyle("-fx-background-color:#04843c;");
 		imagenesSE.setBottom(btnStart);
@@ -90,16 +111,16 @@ public class GUIMain extends Application {
 		imagenesGridPane.setStyle("-fx-background-color:#04843c;");
 		imagenesGridPane.setVgap(5);
 		imagenesGridPane.setHgap(5);
-		Image imagenGridPane1 = new Image(getClass().getResourceAsStream("./Imagenes/imagen1.jpg"), 187.5, 150, false,
+		Image imagenGridPane1 = new Image(getClass().getResourceAsStream("./Imagenes/SE1.jpg"), 187.5, 150, false,
 				false);
 		Label imagenLabel1 = new Label("", new ImageView(imagenGridPane1));
-		Image imagenGridPane2 = new Image(getClass().getResourceAsStream("./Imagenes/imagen2.jpg"), 187.5, 150, false,
+		Image imagenGridPane2 = new Image(getClass().getResourceAsStream("./Imagenes/SE2.jpg"), 187.5, 150, false,
 				false);
 		Label imagenLabel2 = new Label("", new ImageView(imagenGridPane2));
-		Image imagenGridPane3 = new Image(getClass().getResourceAsStream("./Imagenes/imagen3.jpg"), 187.5, 150, false,
+		Image imagenGridPane3 = new Image(getClass().getResourceAsStream("./Imagenes/SE3.jpg"), 187.5, 150, false,
 				false);
 		Label imagenLabel3 = new Label("", new ImageView(imagenGridPane3));
-		Image imagenGridPane4 = new Image(getClass().getResourceAsStream("./Imagenes/imagen4.jpg"), 187.5, 150, false,
+		Image imagenGridPane4 = new Image(getClass().getResourceAsStream("./Imagenes/SE4.png"), 187.5, 150, false,
 				false);
 		Label imagenLabel4 = new Label("", new ImageView(imagenGridPane4));
 		imagenesGridPane.add(imagenLabel1, 0, 0);
@@ -108,6 +129,43 @@ public class GUIMain extends Application {
 		imagenesGridPane.add(imagenLabel4, 1, 1);
 		imagenesGridPane.setAlignment(Pos.CENTER);
 		mainRight.getChildren().add(imagenesGridPane);
+		
+		mainRight.setOnMouseClicked(new EventHandler<MouseEvent>(){
+			public void handle(MouseEvent e) {
+				boolean expandido;
+				expandido = e.getClickCount() == 2;
+				String hvDavid = ""
+						+ "\t\t\t\tHoja de vida\n"
+						+  (!expandido ? "\t\tDoble click aquí para expandir\n" : "\t\t\tClick aquí para contraer\n")
+						+ "\nNombre: David Alejandro Ruiz González"
+						+ "\nCorreo: drruizg@unal.edu.co\n"
+						+ "\nOcupación: Estudiante de Ciencas de la Computación en la U.N."
+						+ "\nPersona apacionada por las matemáticas y su relación con la criptografía, me gusta leer, hacer deporte y desarrollar aplicaciones web.";
+				hojaVidaLabel.setText(hvDavid);
+				hojaVidaLabel.setFont(new Font("Times New Roman", 18));
+				hojaVidaLabel.setTextAlignment(TextAlignment.JUSTIFY);
+				hojaVidaLabel.setTextFill(Color.web("#FFF"));
+				hojaVidaLabel.setPrefSize(450, 300);
+				Image imagenGridPane1 = new Image(getClass().getResourceAsStream("./Imagenes/SEDavid1.jpg"), 187.5, 150, false,
+						false);
+				Label imagenLabel1 = new Label("", new ImageView(imagenGridPane1));
+				Image imagenGridPane2 = new Image(getClass().getResourceAsStream("./Imagenes/SEDavid2.png"), 187.5, 150, false,
+						false);
+				Label imagenLabel2 = new Label("", new ImageView(imagenGridPane2));
+				Image imagenGridPane3 = new Image(getClass().getResourceAsStream("./Imagenes/SEDavid3.jpg"), 187.5, 150, false,
+						false);
+				Label imagenLabel3 = new Label("", new ImageView(imagenGridPane3));
+				Image imagenGridPane4 = new Image(getClass().getResourceAsStream("./Imagenes/SEDavid4.jpg"), 187.5, 150, false,
+						false);
+				Label imagenLabel4 = new Label("", new ImageView(imagenGridPane4));
+				imagenesGridPane.add(imagenLabel1, 0, 0);
+				imagenesGridPane.add(imagenLabel2, 1, 0);
+				imagenesGridPane.add(imagenLabel3, 0, 1);
+				imagenesGridPane.add(imagenLabel4, 1, 1);
+				imagenesGridPane.setAlignment(Pos.CENTER);
+				if (expandido) imagenesGridPane.getChildren().clear();
+			}
+		});
 
 		// CONFIGURACIÓN VENTANA PRINCIPAL
 		BorderPane mainWindow = new BorderPane();
@@ -126,7 +184,7 @@ public class GUIMain extends Application {
 		mainWindow.setRight(mainRight);
 
 		// INICIO
-		mainScene = new Scene(mainWindow, 800, 600);
+		mainScene = new Scene(mainWindow, 1024, 600);
 		mainStage.setResizable(false);
 		mainStage.setScene(mainScene);
 		mainStage.show();
@@ -144,19 +202,20 @@ public class GUIMain extends Application {
 					Platform.exit();
 				} else if (((MenuItem) control).getText().equals("Descripción")) {
 					mainLabel.setText(
-							"La aplicación permite realizar las diferentes funciones que se presentan en el hotel,"
-							+ "tales como el ingreso de los clientes, la selección de la habitación que se acomode a sus necesidades, "
-							+ "la variedad de menús que pueden elegir y las atracciones disponibles para disfrutar de la estadía. "
-							+ "\n"
-							+ "Además permite el acceso del personal encargado de estos procesos para un correcto funcionamiento del "
-							+ "hotel. Entre ellos se destacan al administrador, encargado de pagar el salario de los empleados incluyendo "
-							+ "las horas extras que estos validen; las mucamas, encargadas de mantener las habitaciones en orden y disponibles "
-							+ "cuando se requiera  y el recepcionista, quien tiene el control de la entrada y salida de los clientes y del hotel "
-							+ "en general.");
+							"¡Bienvenido(a) a SuperEnvios, donde todo es posible!"
+							+ "\n\nEsta aplicación te permitirá gestionar todo lo relacionado"
+							+ "\ncon envio, recepción y restreo de encomiendas de tu localidad."
+							+ "\nTambién puedes administrar tu negocio de manera fácil de segura"
+							+ " por medio de una sección a la que sólo puedes acceder si eres"
+							+ " administrador o tienes permisos suficientes."
+							+ "\n\n¡Muchas gracias por elegirnos!"
+							+ "\n\nNota: Al pasar el mouse por aquí volverás a ver las imágenes"
+							);
 					mainLabel.setGraphic(null);
 					mainLabel.setWrapText(true);
 					mainLabel.setTextAlignment(TextAlignment.JUSTIFY);
-					Font tipoletra = new Font("Times New Roman", 15);
+					mainLabel.setTextFill(Color.web("#FFF"));
+					Font tipoletra = new Font("Arial", 15);
 					mainLabel.setFont(tipoletra);
 				}
 			} else if (control instanceof Button) {

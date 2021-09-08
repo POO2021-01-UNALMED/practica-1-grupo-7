@@ -33,20 +33,22 @@ public class Administrar {
 
 		Menu archivo = new Menu("Archivo");
 		MenuItem salir = new MenuItem("Salir");
+		salir.setOnAction(new Eventos());
 		MenuItem regresar = new MenuItem("Regresar");
+		regresar.setOnAction(new Eventos());
 		archivo.getItems().addAll(regresar, salir);
 
 		Menu procesos = new Menu("Empleado");
-		MenuItem fun1 = new MenuItem("Ver informacion");
-		fun1.setOnAction(new Eventos());
-		MenuItem fun2 = new MenuItem("Modificar salario");
-		fun2.setOnAction(new Eventos());
-		MenuItem fun3 = new MenuItem("Modificar contrato");
-		fun3.setOnAction(new Eventos());
-		MenuItem fun4 = new MenuItem("Contratar");
-		fun4.setOnAction(new Eventos());
+		MenuItem info = new MenuItem("Ver informacion");
+		info.setOnAction(new Eventos());
+		MenuItem salario = new MenuItem("Modificar salario");
+		salario.setOnAction(new Eventos());
+		MenuItem contrato = new MenuItem("Modificar contrato");
+		contrato.setOnAction(new Eventos());
+		MenuItem emplear = new MenuItem("Contratar");
+		emplear.setOnAction(new Eventos());
 
-		procesos.getItems().addAll(fun1, fun2, fun3, fun4);
+		procesos.getItems().addAll(info, salario, contrato, emplear);
 
 		Menu ayuda = new Menu("Ayuda");
 		MenuItem acerca = new MenuItem("Acerca de");
@@ -92,6 +94,10 @@ public class Administrar {
 				Administrar.base.getChildren().add(info);
 				Administrar.base.getChildren().remove(3);
 				VBox.setMargin(Administrar.base.getChildren().get(3), new Insets(10,10,10,10));
+			} else if (seleccion.getText().equals("Regresar")) {
+				GUIMain.mainStage.setScene(new Acciones().getMainAccionesGUIMain());
+			} else if ((seleccion.getText().equals("Salir"))) {
+				Platform.exit();
 			}
 		}
 	}
